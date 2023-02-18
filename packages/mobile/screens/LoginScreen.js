@@ -2,11 +2,13 @@ import React, { useState, useEffect } from "react";
 import { View, Text, SafeAreaView, Pressable } from "react-native";
 import auth from "@react-native-firebase/auth";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
+import firestore from "@react-native-firebase/firestore";
 
 GoogleSignin.configure({
   webClientId:
     "952030183707-mhtnrvjp5v00jj3c44qss68s6daa2de8.apps.googleusercontent.com",
 });
+
 async function onGoogleButtonPress() {
   // Check if your device supports Google Play
   await GoogleSignin.hasPlayServices({ showPlayServicesUpdateDialog: true });
@@ -19,7 +21,22 @@ async function onGoogleButtonPress() {
   // Sign-in the user with the credential
   return auth().signInWithCredential(googleCredential);
 }
+
 function LoginScreen() {
+  const [data, setData] = useState({});
+
+  useEffect(() => {
+    const subscriber = firestore()
+      .collection("testing")
+      .doc("samyok")
+      .onSnapshot((documentSnapshot) => {
+        setData(documentSnapshot.data());
+      });
+
+    // Stop listening for updates when no longer required
+    return () => subscriber();
+  }, []);
+
   // Set an initializing state whilst Firebase connects
   const [initializing, setInitializing] = useState(true);
   const [user, setUser] = useState();
@@ -73,6 +90,7 @@ function LoginScreen() {
         }}
       >
         <Text>Welcome {user.email}</Text>
+        <Text>{JSON.stringify(data)}</Text>
       </SafeAreaView>
     </View>
   );

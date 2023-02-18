@@ -14,6 +14,7 @@
     "@expo/vector-icons": "^13.0.0",
     "@react-native-firebase/app": "^17.3.0",
     "@react-native-firebase/auth": "^17.3.0",
+    "@react-native-firebase/firestore": "^17.3.0",
     "@react-native-google-signin/google-signin": "^9.0.2",
     "@react-navigation/bottom-tabs": "^6.5.5",
     "@react-navigation/native": "^6.1.4",

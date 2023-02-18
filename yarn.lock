@@ -3857,6 +3857,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@react-native-firebase/firestore@npm:^17.3.0":
+  version: 17.3.0
+  resolution: "@react-native-firebase/firestore@npm:17.3.0"
+  peerDependencies:
+    "@react-native-firebase/app": 17.3.0
+  checksum: d9bd958e9be09ebd07d96738ee3eff82a1f9894f618358c293a2b5f099a2dbd09c129c98e42768bcd9a805f21b67e8d949a97d1477d5958c45d8eb309c5e1651
+  languageName: node
+  linkType: hard
+
 "@react-native-google-signin/google-signin@npm:^9.0.2":
   version: 9.0.2
   resolution: "@react-native-google-signin/google-signin@npm:9.0.2"
@@ -10339,6 +10348,7 @@ __metadata:
     "@expo/vector-icons": ^13.0.0
     "@react-native-firebase/app": ^17.3.0
     "@react-native-firebase/auth": ^17.3.0
+    "@react-native-firebase/firestore": ^17.3.0
     "@react-native-google-signin/google-signin": ^9.0.2
     "@react-navigation/bottom-tabs": ^6.5.5
     "@react-navigation/native": ^6.1.4
