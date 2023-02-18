@@ -57,7 +57,6 @@ const styles = StyleSheet.create({
     fontSize: 14,
     color: "white",
     fontFamily: "Poppins",
-    fontStyle: "normal",
     fontWeight: "400",
     lineHeight: 21,
     display: "flex",

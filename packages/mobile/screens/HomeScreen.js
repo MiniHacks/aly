@@ -1,9 +1,21 @@
 import React from "react";
-import { SafeAreaView, Text, View, ScrollView } from "react-native";
+import { SafeAreaView, Text, View, ScrollView, TouchableOpacity } from "react-native";
 import StrikeButton from "../components/StrikeButton";
 import StreakIcon from "../components/StreakIcon";
 import NextUpButton from "../components/NextUpButton";
 import { StyleSheet } from "react-native";
+
+function AddTaskButton({ navigation }) {
+  return (
+    <TouchableOpacity
+      onPress={() => navigation.navigate('AddTaskScreen')}
+      style={styles.touchableopacity}
+    >
+      <Text style={{ color: 'white', fontSize: 24 }}>+</Text>
+    </TouchableOpacity>
+  );
+}
+
 function getDate() {
   var dayName = new Date().toLocaleString("en-us", { weekday: "long" });
   var monthName = new Date().toLocaleString("en-us", { month: "long" });
@@ -17,7 +29,7 @@ function getDate() {
   );
 }
 
-export default function HomeScreen() {
+export default function HomeScreen( navigation ) {
   return (
     <SafeAreaView
       style={{
@@ -37,7 +49,7 @@ export default function HomeScreen() {
           }}
         >
           <Text style={styles.date}>{getDate()}</Text>
-          <StreakIcon streak={5} />
+          <StreakIcon streak={7} />
         </View>
         <View
           style={{
@@ -71,6 +83,7 @@ export default function HomeScreen() {
         >
           <NextUpButton event={0} />
         </View>
+      <AddTaskButton navigation={ navigation }/>
       </ScrollView>
     </SafeAreaView>
   );
@@ -85,4 +98,15 @@ const styles = StyleSheet.create({
     lineHeight: 42,
     color: "#FFFFFF",
   },
+  touchableopacity: {
+    position: 'static',
+    backgroundColor: '#FF8774',
+    width: 50,
+    height: 50,
+    left: 315,
+    top: 325,
+    borderRadius: 50,
+    alignItems: 'center',
+    justifyContent: 'center',
+  }
 });
