@@ -1,5 +1,5 @@
 import { StatusBar } from "expo-status-bar";
-import React from "react";
+import React, { useState } from "react";
 import { StyleSheet } from "react-native";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
@@ -16,8 +16,14 @@ function MyTabs() {
     <Tab.Navigator
       initialRouteName="Login"
       screenOptions={{
-        tabBarActiveTintColor: "#e91e63",
+        tabBarActiveTintColor: "#3D3A9E",
         headerShown: false,
+        tabBarStyle: {
+          backgroundColor: "#fff",
+          borderTopColor: "transparent",
+          height: 70,
+          paddingBottom: 20,
+        }
       }}
     >
       <Tab.Screen
@@ -47,7 +53,7 @@ function MyTabs() {
         options={{
           tabBarLabel: "Contacts",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="home" color={color} size={size} />
+            <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
         }}
       />
@@ -58,7 +64,7 @@ function MyTabs() {
         options={{
           tabBarLabel: "Settings",
           tabBarIcon: ({ color, size }) => (
-            <MaterialCommunityIcons name="bell" color={color} size={size} />
+            <MaterialCommunityIcons name="cog" color={color} size={size} />
           ),
         }}
       />
@@ -75,11 +81,3 @@ export default function App() {
   );
 }
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: "#fff",
-    alignItems: "center",
-    justifyContent: "center",
-  },
-});
