@@ -6,6 +6,7 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import SettingsScreen from "./screens/SettingsScreen";
 import HomeScreen from "./screens/HomeScreen";
+import ContactsScreen from "./screens/ContactsScreen";
 
 const Tab = createBottomTabNavigator();
 
@@ -28,6 +29,18 @@ function MyTabs() {
           ),
         }}
       />
+
+      <Tab.Screen
+        name="Contacts"
+        component={ContactsScreen}
+        options={{
+          tabBarLabel: "Contacts",
+          tabBarIcon: ({ color, size }) => (
+            <MaterialCommunityIcons name="home" color={color} size={size} />
+          ),
+        }}
+      />
+
       <Tab.Screen
         name="Settings"
         component={SettingsScreen}
