@@ -10262,6 +10262,7 @@ __metadata:
     "@react-navigation/bottom-tabs": ^6.5.5
     "@react-navigation/native": ^6.1.4
     expo: ~47.0.12
+    expo-font: ~11.0.1
     expo-splash-screen: ~0.17.5
     expo-status-bar: ~1.4.2
     react: 18.1.0
