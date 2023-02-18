@@ -21,7 +21,7 @@ export default function HomeScreen() {
     <SafeAreaView
       style={{
         flex: 1,
-        backgroundColor: "5F5BDD",
+        backgroundColor: "#5F5BDD",
       }}
     >
       <ScrollView>
@@ -44,7 +44,7 @@ export default function HomeScreen() {
             alignItems: "center",
           }}
         >
-          <StrikeButton strikeCount={3} />
+          <StrikeButton strikeCount={0} />
         </View>
       </ScrollView>
     </SafeAreaView>
