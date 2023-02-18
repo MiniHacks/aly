@@ -16,31 +16,10 @@ export default function StrikeButton({ strikeCount }) {
       <View style={styles.box1}>
         <Text style={styles.text1}>{text}</Text>
       </View>
-      <View style={styles.box2}>
-        <Text style={styles.text2}>
-          you’re on a seven day streak! keep it up!
-        </Text>
-      </View>
     </View>
   );
 }
 const styles = StyleSheet.create({
-  box1: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#726FE4",
-    height: 100,
-  },
-  box2: {
-    flex: 1,
-    flexDirection: "column",
-    justifyContent: "center",
-    alignItems: "center",
-    backgroundColor: "#3D3A9E",
-    height: 40,
-  },
   text1: {
     fontVariant: "bold",
     color: "white",
@@ -53,15 +32,13 @@ const styles = StyleSheet.create({
     alignItems: "center",
     textAlign: "center",
   },
-  text2: {
-    fontSize: 14,
-    color: "white",
-    fontFamily: "Poppins",
-    fontStyle: "normal",
-    fontWeight: "400",
-    lineHeight: 21,
-    display: "flex",
+  box1: {
+    flex: 1,
+    flexDirection: "column",
+    justifyContent: "center",
     alignItems: "center",
-    textAlign: "center",
+    backgroundColor: "#FFF",
+    height: 60,
+    dropShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
   },
 });

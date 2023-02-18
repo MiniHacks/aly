@@ -2,6 +2,7 @@ import React from "react";
 import { SafeAreaView, Text, View, ScrollView } from "react-native";
 import StrikeButton from "../components/StrikeButton";
 import StreakIcon from "../components/StreakIcon";
+import NextUpButton from "../components/NextUpButton";
 import { StyleSheet } from "react-native";
 function getDate() {
   var dayName = new Date().toLocaleString("en-us", { weekday: "long" });
@@ -31,7 +32,7 @@ export default function HomeScreen() {
             flexDirection: "row",
             marginLeft: "7.5%",
             marginRight: "7.5%",
-            marginBottom: 20,
+            marginBottom: 30,
             justifyContent: "space-between",
           }}
         >
@@ -42,9 +43,33 @@ export default function HomeScreen() {
           style={{
             flex: 1,
             alignItems: "center",
+            marginBottom: 10,
           }}
         >
           <StrikeButton strikeCount={0} />
+        </View>
+        <Text
+          style={{
+            fontFamily: "Poppins",
+            fontStyle: "normal",
+            fontWeight: "600",
+            fontSize: 24,
+            lineHeight: 42,
+            color: "#FFFFFF",
+            marginLeft: "7.5%",
+            marginRight: "7.5%",
+          }}
+        >
+          next up
+        </Text>
+        <View
+          style={{
+            flex: 1,
+            alignItems: "center",
+            marginBottom: 10,
+          }}
+        >
+          <NextUpButton event={0} />
         </View>
       </ScrollView>
     </SafeAreaView>
