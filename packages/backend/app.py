@@ -17,6 +17,7 @@ async def root():
     return {"message": "Hello World"}
 
 
+@app.post("/web_analysis")
 async def web_analysis(website: WebsiteText):
     # do some analysis
     return {"message": "woah"}
