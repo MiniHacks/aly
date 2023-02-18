@@ -1,13 +1,14 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
+from typing import Union
 
 app = FastAPI()
 
 
 class WebsiteText(BaseModel):
-    heading: str | None
-    title: str | None
-    body: str | None
+    heading: Union[str, None]
+    title: Union[str, None]
+    body: Union[str, None]
     userId: str
 
 
