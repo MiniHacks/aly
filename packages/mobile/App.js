@@ -6,18 +6,29 @@ import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import SettingsScreen from "./screens/SettingsScreen";
 import HomeScreen from "./screens/HomeScreen";
+import LoginScreen from "./screens/LoginScreen";
 
 const Tab = createBottomTabNavigator();
 
 function MyTabs() {
   return (
     <Tab.Navigator
-      initialRouteName="Home"
+      initialRouteName="Login"
       screenOptions={{
         tabBarActiveTintColor: "#e91e63",
         headerShown: false,
       }}
     >
+      <Tab.Screen
+        name={"Login"}
+        component={LoginScreen}
+        options={
+          {
+            // hide on tab bar:
+            // tabBarButton: () => null,
+          }
+        }
+      />
       <Tab.Screen
         name="Home"
         component={HomeScreen}
@@ -45,7 +56,7 @@ function MyTabs() {
 export default function App() {
   return (
     <NavigationContainer>
-      <StatusBar style="auto" />
+      <StatusBar style="dark" />
       <MyTabs />
     </NavigationContainer>
   );
