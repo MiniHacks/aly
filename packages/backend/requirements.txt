@@ -1,2 +1,81 @@
+backports.entry-points-selectable @ file:///build/backports.entry_points_selectable-1.1.1/dist/backports.entry_points_selectable-1.1.1-py2.py3-none-any.whl
+blinker @ file:///build/blinker-1.5/dist/blinker-1.5-py2.py3-none-any.whl
+Brotli @ file:///build/source/dist/Brotli-1.0.9-cp39-cp39-linux_x86_64.whl
+brotlicffi @ file:///build/source/dist/brotlicffi-1.0.9.2-cp39-abi3-linux_x86_64.whl
+cachetools @ file:///build/source/dist/cachetools-5.2.0-py3-none-any.whl
+certifi @ file:///build/source/dist/certifi-2022.6.15-py3-none-any.whl
+cffi @ file:///build/cffi-1.15.1/dist/cffi-1.15.1-cp39-cp39-linux_x86_64.whl
+charset-normalizer @ file:///build/source/dist/charset_normalizer-2.1.0-py3-none-any.whl
+click @ file:///build/click-8.1.3/dist/click-8.1.3-py3-none-any.whl
+cryptography @ file:///build/cryptography-38.0.1/dist/cryptography-38.0.1-cp39-cp39-linux_x86_64.whl
+defusedxml @ file:///build/defusedxml-0.7.1/dist/defusedxml-0.7.1-py2.py3-none-any.whl
+distlib @ file:///build/distlib-0.3.6/dist/distlib-0.3.6-py2.py3-none-any.whl
 fastapi==0.74.0
-uvicorn[standard]==0.17.5
+filelock @ file:///build/filelock-3.8.0/dist/filelock-3.8.0-py3-none-any.whl
+future @ file:///build/future-0.18.2/dist/future-0.18.2-py3-none-any.whl
+google-auth @ file:///build/google-auth-2.11.0/dist/google_auth-2.11.0-py2.py3-none-any.whl
+google-auth-oauthlib @ file:///build/google-auth-oauthlib-0.5.2/dist/google_auth_oauthlib-0.5.2-py2.py3-none-any.whl
+grpcio @ file:///build/source/dist/grpcio-1.48.1-cp39-cp39-linux_x86_64.whl
+gviz-api @ file:///build/dist/gviz_api-1.10.0-py2.py3-none-any.whl
+h11==0.14.0
+httptools==0.3.0
+huggingface-hub==0.12.1
+idna @ file:///build/idna-3.4/dist/idna-3.4-py3-none-any.whl
+importlib-metadata @ file:///build/importlib_metadata-4.12.0/dist/importlib_metadata-4.12.0-py3-none-any.whl
+joblib==1.2.0
+Markdown @ file:///build/Markdown-3.4.1/dist/Markdown-3.4.1-py3-none-any.whl
+MarkupSafe @ file:///build/MarkupSafe-2.1.1/dist/MarkupSafe-2.1.1-cp39-cp39-linux_x86_64.whl
+nltk==3.8.1
+numpy @ file:///build/numpy-1.23.3/dist/numpy-1.23.3-cp39-cp39-linux_x86_64.whl
+nvidia-cublas-cu11==11.10.3.66
+nvidia-cuda-nvrtc-cu11==11.7.99
+nvidia-cuda-runtime-cu11==11.7.99
+nvidia-cudnn-cu11==8.5.0.96
+oauthlib @ file:///build/source/dist/oauthlib-3.2.1-py3-none-any.whl
+olefile @ file:///build/olefile-0.46/dist/olefile-0.46-py2.py3-none-any.whl
+packaging==23.0
+pathtools @ file:///build/pathtools-0.1.2/dist/pathtools-0.1.2-py3-none-any.whl
+Pillow @ file:///build/Pillow-9.2.0/dist/Pillow-9.2.0-cp39-cp39-linux_x86_64.whl
+platformdirs @ file:///build/source/dist/platformdirs-2.5.2-py3-none-any.whl
+protobuf @ file:///build/source/python/dist/protobuf-4.21.6-cp39-cp39-linux_x86_64.whl
+pyasn1 @ file:///build/pyasn1-0.4.8/dist/pyasn1-0.4.8-py2.py3-none-any.whl
+pyasn1-modules @ file:///build/pyasn1-modules-0.2.8/dist/pyasn1_modules-0.2.8-py2.py3-none-any.whl
+pycparser @ file:///build/pycparser-2.21/dist/pycparser-2.21-py2.py3-none-any.whl
+pydantic==1.10.5
+PyJWT @ file:///build/PyJWT-2.5.0/dist/PyJWT-2.5.0-py3-none-any.whl
+PySocks @ file:///build/PySocks-1.7.1/dist/PySocks-1.7.1-py3-none-any.whl
+python-dotenv==0.21.1
+PyYAML @ file:///build/source/dist/PyYAML-6.0-cp39-cp39-linux_x86_64.whl
+regex==2022.10.31
+requests @ file:///build/requests-2.28.1/dist/requests-2.28.1-py3-none-any.whl
+requests-oauthlib @ file:///build/requests-oauthlib-1.3.1/dist/requests_oauthlib-1.3.1-py2.py3-none-any.whl
+rsa @ file:///build/rsa-4.9/dist/rsa-4.9-py3-none-any.whl
+scikit-learn==1.2.1
+scipy==1.5.4
+sentence-transformers==2.2.2
+sentencepiece==0.1.97
+simcse==0.4
+six @ file:///build/six-1.16.0/dist/six-1.16.0-py2.py3-none-any.whl
+sniffio==1.3.0
+starlette==0.17.1
+tensorboard @ file:///build/dist/tensorboard-2.10.0-py3-none-any.whl
+tensorboard-data-server @ file:///build/dist/tensorboard_data_server-0.6.1-py3-none-any.whl
+tensorboard-plugin-profile @ file:///build/dist/tensorboard_plugin_profile-2.8.0-py3-none-any.whl
+tensorboard-plugin-wit @ file:///build/dist/tensorboard_plugin_wit-1.7.0-py3-none-any.whl
+threadpoolctl==3.1.0
+tokenizers==0.13.2
+toml @ file:///build/toml-0.10.2/dist/toml-0.10.2-py2.py3-none-any.whl
+torch @ file:///build/source/dist/torch-1.12.1-cp39-cp39-linux_x86_64.whl
+torchvision==0.14.1
+tqdm==4.64.1
+transformers==4.26.1
+typing_extensions @ file:///build/typing_extensions-4.3.0/dist/typing_extensions-4.3.0-py3-none-any.whl
+urllib3 @ file:///build/urllib3-1.26.12/dist/urllib3-1.26.12-py2.py3-none-any.whl
+uvicorn==0.17.5
+uvloop==0.17.0
+virtualenv @ file:///build/virtualenv-20.16.5/dist/virtualenv-20.16.5-py3-none-any.whl
+watchdog @ file:///build/watchdog-2.1.9/dist/watchdog-2.1.9-py3-none-any.whl
+watchgod==0.8.2
+websockets==10.4
+Werkzeug @ file:///build/Werkzeug-2.2.2/dist/Werkzeug-2.2.2-py3-none-any.whl
+zipp @ file:///build/zipp-3.8.1/dist/zipp-3.8.1-py3-none-any.whl

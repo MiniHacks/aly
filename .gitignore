@@ -53,6 +53,7 @@ yarn-error.log*
 # don't ignore all of .idea
 .idea/libraries
 .idea/workspace.xml
+.idea/shelf
 
 # python
 venv

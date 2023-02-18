@@ -1,0 +1,4 @@
+# don't ignore all of .idea
+.idea/libraries
+.idea/workspace.xml
+.idea/shelf
