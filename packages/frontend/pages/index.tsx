@@ -1,20 +1,19 @@
 import type { NextPage } from "next";
 import {
   Box,
-  Heading,
-  HStack,
-  VStack,
   Button,
   chakra,
+  HStack,
   Image,
   Text,
-  IconButton,
+  VStack,
 } from "@chakra-ui/react";
 import React from "react";
 import { FiChrome } from "react-icons/fi";
+import { SiAppstore } from "react-icons/si";
+import { BsArrowRight } from "react-icons/bs";
 import PageLayout from "../components/Layout/PageLayout";
 import NavBar from "../components/NavBar";
-import iPhone from "../public/iphone.png";
 
 const Home: NextPage = () => {
   return (
@@ -84,11 +83,15 @@ const Home: NextPage = () => {
       </Box>
       <NavBar />
       <HStack mt={170}>
-        <VStack justifyItems={"space-between"}>
+        <VStack
+          justifyItems={"space-between"}
+          ml={200}
+          align={"start"}
+          pt={130}
+          spacing={8}
+        >
           <Box
             style={{
-              marginTop: "130px",
-              marginLeft: "210px",
               fontFamily: "Lato",
               fontStyle: "normal",
               fontWeight: "900",
@@ -98,7 +101,7 @@ const Home: NextPage = () => {
               lineHeight: "105%",
             }}
           >
-            Keeping you <br />
+            keeping you <br />
             accountable,
           </Box>
           <Box
@@ -112,28 +115,56 @@ const Home: NextPage = () => {
           >
             one awkward text at a time
           </Box>
-          <HStack justifyContent={"center"} paddingTop={"75px"} ml={"10px"}>
-            <Box>
-              <Button
-                leftIcon={<FiChrome />}
-                backgroundColor={"#3D3A9E"}
-                width={"240px"}
-                height={"60px"}
-                color={"white"}
-                variant={"ghost"}
-                display={"flex"}
-                _hover={{
-                  backgroundColor: "#524FA8",
-                }}
-              >
-                <Text fontFamily={"Poppins"} fontWeight={"500"}>
-                  CHROME EXTENSION
-                </Text>
-              </Button>
-            </Box>
-            <Box>
-              <Image src={"appstore.png"} width={"200px"} />
-            </Box>
+          <HStack justifyContent={"center"} ml={"10px"}>
+            <Button
+              leftIcon={<BsArrowRight />}
+              backgroundColor={"white"}
+              color={"#3D3A9E"}
+              px={4}
+              py={6}
+              variant={"ghost"}
+              display={"flex"}
+              _hover={{
+                backgroundColor: "rgba(255, 255, 255, 0.7)",
+              }}
+            >
+              <Text fontFamily={"Poppins"} fontWeight={"500"}>
+                start now
+              </Text>
+            </Button>
+            <Button
+              leftIcon={<FiChrome />}
+              backgroundColor={"#3D3A9E"}
+              color={"white"}
+              px={4}
+              py={6}
+              variant={"ghost"}
+              display={"flex"}
+              _hover={{
+                backgroundColor: "#524FA8",
+              }}
+            >
+              <Text fontFamily={"Poppins"} fontWeight={"500"}>
+                chrome
+              </Text>
+            </Button>
+
+            <Button
+              leftIcon={<SiAppstore />}
+              backgroundColor={"#3D3A9E"}
+              color={"white"}
+              px={4}
+              py={6}
+              variant={"ghost"}
+              display={"flex"}
+              _hover={{
+                backgroundColor: "#524FA8",
+              }}
+            >
+              <Text fontFamily={"Poppins"} fontWeight={"500"}>
+                app store
+              </Text>
+            </Button>
           </HStack>
         </VStack>
       </HStack>
