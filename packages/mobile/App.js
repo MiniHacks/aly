@@ -44,7 +44,14 @@ function MyTabs({ navigation: stackNavigation }) {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      screenOptions={{
+      screenOptions={({ route }) => ({
+        tabBarButton: ["DoSomething", "BeSomewhere", "Focus"].includes(
+          route.name
+        )
+          ? () => {
+              return null;
+            }
+          : undefined,
         tabBarActiveTintColor: "#3D3A9E",
         headerShown: false,
         tabBarStyle: {
@@ -53,7 +60,7 @@ function MyTabs({ navigation: stackNavigation }) {
           height: 70,
           paddingBottom: 20,
         },
-      }}
+      })}
     >
       <Tab.Screen
         name="Home"
@@ -65,7 +72,11 @@ function MyTabs({ navigation: stackNavigation }) {
           ),
         }}
       />
-
+      <Tab.Screen
+        name="BeSomewhere"
+        component={BeSomewhereScreen}
+        options={{}}
+      />
       <Tab.Screen
         name="Contacts"
         component={ContactsScreen}
@@ -76,6 +87,7 @@ function MyTabs({ navigation: stackNavigation }) {
           ),
         }}
       />
+      <Tab.Screen name="Focus" component={FocusScreen} options={{}} />
 
       <Tab.Screen
         name="Settings"
@@ -87,9 +99,12 @@ function MyTabs({ navigation: stackNavigation }) {
           ),
         }}
       />
-      <Tab.Screen name="BeSomewhere" component={BeSomewhereScreen} />
-      <Tab.Screen name="Focus" component={FocusScreen} />
-      <Tab.Screen name="DoSomething" component={DoSomethingScreen} />
+
+      <Tab.Screen
+        name="DoSomething"
+        component={DoSomethingScreen}
+        options={{}}
+      />
     </Tab.Navigator>
   );
 }
