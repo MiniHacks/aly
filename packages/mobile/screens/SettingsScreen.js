@@ -7,10 +7,12 @@ import {
   ImageBackground,
   Button,
 } from "react-native";
-import SettingsBG from "../components/SettingsCoolio.png";
+import SettingsBG from "../components/BackgroundSettings.png";
 import auth from "@react-native-firebase/auth";
+import cardStyles from "../components/CardStyles";
 
-export default function SettingsScreen({ stackNavigation }) {
+export default function SettingsScreen() {
+  const user = auth().currentUser;
   return (
     <ImageBackground
       style={{
@@ -36,6 +38,7 @@ export default function SettingsScreen({ stackNavigation }) {
         style={{
           display: "flex",
           flexDirection: "row",
+          marginTop: 20,
         }}
       >
         <View
@@ -46,8 +49,25 @@ export default function SettingsScreen({ stackNavigation }) {
             borderRadius: 50,
             marginLeft: 20,
           }}
-        ></View>
-        <View>
+        >
+          <Image source={{ uri: user.photoURL }} />
+        </View>
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "column",
+          }}
+        >
+          <Text
+            style={{
+              color: "#fff",
+              fontSize: 14,
+              marginLeft: 10,
+              fontFamily: "Poppins_600SemiBold",
+            }}
+          >
+            {user.displayName}
+          </Text>
           <Text
             style={{
               color: "#fff",
@@ -56,12 +76,64 @@ export default function SettingsScreen({ stackNavigation }) {
               fontFamily: "Poppins_400Regular",
             }}
           >
-            Name of the person
+            {user.email}
           </Text>
         </View>
       </View>
+      <View
+        style={{
+          ...cardStyles,
+          height: 80,
+          marginTop: 80,
+          padding: 10,
+          paddingVertical: 15,
+          borderRadius: 10,
+          backgroundColor: "#FFF",
+          marginHorizontal: 20,
+          alignItems: "center",
+        }}
+      ></View>
+      <View
+        style={{
+          ...cardStyles,
+          height: 80,
+          padding: 10,
+          marginTop: 20,
+          paddingVertical: 15,
+          borderRadius: 10,
+          backgroundColor: "#FFF",
+          marginHorizontal: 20,
+          alignItems: "center",
+        }}
+      ></View>
+      <View
+        style={{
+          ...cardStyles,
+          height: 80,
+          padding: 10,
+          marginTop: 20,
+          paddingVertical: 15,
+          borderRadius: 10,
+          backgroundColor: "#FFF",
+          marginHorizontal: 20,
+          alignItems: "center",
+        }}
+      ></View>
+      <View
+        style={{
+          ...cardStyles,
+          height: 80,
+          padding: 10,
+          marginTop: 20,
+          paddingVertical: 15,
+          borderRadius: 10,
+          backgroundColor: "#FFF",
+          marginHorizontal: 20,
+          alignItems: "center",
+        }}
+      ></View>
       <Button
-        title={"sign out bitch"}
+        title={"Sign Out"}
         onPress={() =>
           auth()
             .signOut()
