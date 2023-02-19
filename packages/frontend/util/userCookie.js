@@ -1,7 +1,5 @@
-import cookies from "js-cookie";
-
 export const getUserFromCookie = () => {
-  const cookie = cookies.get("auth");
+  const cookie = localStorage.getItem("auth");
   if (!cookie) {
     return null;
   }
@@ -9,9 +7,7 @@ export const getUserFromCookie = () => {
 };
 
 export const setUserCookie = (user) => {
-  cookies.set("auth", JSON.stringify(user), {
-    expires: 1 / 24,
-  });
+  localStorage.setItem("auth", JSON.stringify(user));
 };
 
-export const removeUserCookie = () => cookies.remove("auth");
+export const removeUserCookie = () => localStorage.removeItem("auth");

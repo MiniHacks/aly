@@ -1,0 +1,55 @@
+import React from "react";
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
+import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
+import cardStyles from "./CardStyles";
+function DoSomethingButton({ navigation }) {
+  return (
+    <View style={[styles.bigbox, cardStyles]}>
+      <View
+        style={{
+          backgroundColor: "#BBDDFF",
+          borderRadius: 10,
+          height: 40,
+          width: 40,
+          overflow: "hidden",
+          padding: 5,
+          marginRight: 10,
+        }}
+      >
+        <Entypo name="clipboard" size={30} color="#3498FD" />
+      </View>
+      <Pressable
+        onPress={() => navigation.navigate("DoSomething")}
+        style={styles.button}
+      >
+        <Text style={styles.text1}>do something</Text>
+      </Pressable>
+    </View>
+  );
+}
+
+const styles = StyleSheet.create({
+  text1: {
+    color: "#3D3A9E",
+    fontFamily: "Poppins_600SemiBold",
+    fontSize: 24,
+    display: "flex",
+  },
+
+  bigbox: {
+    flex: 1,
+    padding: 10,
+    flexDirection: "row",
+    borderRadius: 10,
+    backgroundColor: "#FFF",
+    alignItems: "center",
+  },
+});
+
+export default DoSomethingButton;

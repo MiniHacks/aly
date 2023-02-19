@@ -8,6 +8,9 @@ import SettingsScreen from "./screens/SettingsScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import ContactsScreen from "./screens/ContactsScreen";
+import BeSomewhereScreen from "./screens/BeSomewhereScreen";
+import FocusScreen from "./screens/FocusScreen";
+import DoSomethingScreen from "./screens/DoSomethingScreen";
 import {
   Poppins_100Thin,
   Poppins_100Thin_Italic,
@@ -41,7 +44,14 @@ function MyTabs({ navigation: stackNavigation }) {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      screenOptions={{
+      screenOptions={({ route }) => ({
+        tabBarButton: ["DoSomething", "BeSomewhere", "Focus"].includes(
+          route.name
+        )
+          ? () => {
+              return null;
+            }
+          : undefined,
         tabBarActiveTintColor: "#3D3A9E",
         headerShown: false,
         tabBarStyle: {
@@ -50,7 +60,7 @@ function MyTabs({ navigation: stackNavigation }) {
           height: 70,
           paddingBottom: 20,
         },
-      }}
+      })}
     >
       <Tab.Screen
         name="Home"
@@ -62,7 +72,11 @@ function MyTabs({ navigation: stackNavigation }) {
           ),
         }}
       />
-
+      <Tab.Screen
+        name="BeSomewhere"
+        component={BeSomewhereScreen}
+        options={{}}
+      />
       <Tab.Screen
         name="Contacts"
         component={ContactsScreen}
@@ -73,6 +87,7 @@ function MyTabs({ navigation: stackNavigation }) {
           ),
         }}
       />
+      <Tab.Screen name="Focus" component={FocusScreen} options={{}} />
 
       <Tab.Screen
         name="Settings"
@@ -83,6 +98,12 @@ function MyTabs({ navigation: stackNavigation }) {
             <MaterialCommunityIcons name="cog" color={color} size={size} />
           ),
         }}
+      />
+
+      <Tab.Screen
+        name="DoSomething"
+        component={DoSomethingScreen}
+        options={{}}
       />
     </Tab.Navigator>
   );

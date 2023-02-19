@@ -1,5 +1,6 @@
 import React from "react";
 import {
+  Pressable,
   ScrollView,
   StyleSheet,
   Text,
@@ -10,18 +11,8 @@ import StrikeButton from "../components/StrikeButton";
 import StreakIcon from "../components/StreakIcon";
 import NextUpButton from "../components/NextUpButton";
 import TaskList from "../components/TaskList";
+// import BeSomewhereButton from "../components/BeSomewhereButton";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
-
-function AddTaskButton({ navigation }) {
-  return (
-    <TouchableOpacity
-      onPress={() => navigation.navigate("AddTaskScreen")}
-      style={styles.addtaskbutton}
-    >
-      <MaterialCommunityIcons name="plus" color={"#3D3A9E"} size={50} />
-    </TouchableOpacity>
-  );
-}
 
 function getDate() {
   const dayName = new Date().toLocaleString("en-us", { weekday: "long" });
@@ -32,7 +23,7 @@ function getDate() {
     .slice(0, 3)} ${dayNumber}`;
 }
 
-export default function HomeScreen(navigation) {
+export default function HomeScreen({ navigation }) {
   return (
     <View
       style={{
@@ -40,7 +31,6 @@ export default function HomeScreen(navigation) {
         backgroundColor: "#5F5BDD",
       }}
     >
-      <AddTaskButton navigation={navigation} />
       <View
         style={{
           backgroundColor: "#EEF2F6",
@@ -67,7 +57,7 @@ export default function HomeScreen(navigation) {
           }}
         >
           <Text style={styles.date}>{getDate()}</Text>
-          <StreakIcon streak={7} />
+          <StreakIcon streak={1} />
         </View>
         <View
           style={{
@@ -125,7 +115,7 @@ export default function HomeScreen(navigation) {
             paddingBottom: 200,
           }}
         >
-          <TaskList />
+          <TaskList navigation={navigation} />
         </View>
       </ScrollView>
     </View>
@@ -152,5 +142,19 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     zIndex: 1,
+  },
+  button: {
+    backgroundColor: "#3D3A9E",
+    borderRadius: 10,
+    padding: 10,
+    margin: 10,
+    width: 200,
+    alignSelf: "center",
+  },
+  text: {
+    color: "#FFF",
+    fontFamily: "Poppins_600SemiBold",
+    fontSize: 24,
+    textAlign: "center",
   },
 });
