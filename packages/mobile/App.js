@@ -56,7 +56,7 @@ function MyTabs({ navigation: stackNavigation }) {
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: "Home",
+          tabBarLabel: "home",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="home" color={color} size={size} />
           ),
@@ -67,7 +67,7 @@ function MyTabs({ navigation: stackNavigation }) {
         name="Contacts"
         component={ContactsScreen}
         options={{
-          tabBarLabel: "Contacts",
+          tabBarLabel: "contacts",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="account" color={color} size={size} />
           ),
@@ -78,7 +78,7 @@ function MyTabs({ navigation: stackNavigation }) {
         name="Settings"
         component={settingsTab(stackNavigation)}
         options={{
-          tabBarLabel: "Settings",
+          tabBarLabel: "settings",
           tabBarIcon: ({ color, size }) => (
             <MaterialCommunityIcons name="cog" color={color} size={size} />
           ),

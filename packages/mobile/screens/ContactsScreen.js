@@ -1,5 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { Button, SafeAreaView, ScrollView, Text } from "react-native";
+import {
+  Button,
+  RefreshControl,
+  SafeAreaView,
+  ScrollView,
+  Text,
+  View,
+} from "react-native";
 import Contacts from "react-native-contacts";
 import ContactCard from "../components/ContactCard";
 import firestore from "@react-native-firebase/firestore";
@@ -7,7 +14,6 @@ import auth from "@react-native-firebase/auth";
 import SearchBar from "../components/SearchBar";
 
 export default function HomeScreen() {
-  const [contacts, setContacts] = useState([]);
   const [loading, setLoading] = useState(false);
   const [data, setData] = useState({});
   const [searchPhrase, setSearchPhrase] = useState("");
@@ -28,9 +34,11 @@ export default function HomeScreen() {
 
   const getContacts = () => {
     setLoading(true);
-    Contacts.getAll().then((contacts) => {
+    Promise.all([
+      Contacts.getAll(),
+      new Promise((r) => setTimeout(r, 750)),
+    ]).then(([contacts, _]) => {
       setLoading(false);
-      setContacts(contacts);
       firestore().collection("contacts").doc(auth().currentUser.uid).update(
         {
           contacts: contacts,
@@ -41,38 +49,69 @@ export default function HomeScreen() {
   };
 
   return (
-    <SafeAreaView
+    <View
       style={{
-        flex: 1,
-        justifyContent: "center",
-        alignItems: "center",
+        backgroundColor: "#EEF2F6",
+        height: "100%",
+        width: "100%",
       }}
     >
-      <Text>Contacts</Text>
-      {!loading && (
-        <Button
-          title={`${contacts ? "Refresh" : "Get"} Contacts`}
-          onPress={getContacts}
-        />
-      )}
-      {loading && <Text>Loading...</Text>}
+      <SafeAreaView
+        style={{
+          flex: 1,
+          justifyContent: "center",
+          alignItems: "center",
+        }}
+      >
+        <ScrollView
+          style={{ width: "100%" }}
+          refreshControl={
+            <RefreshControl refreshing={loading} onRefresh={getContacts} />
+          }
+        >
+          <Text
+            style={{
+              fontFamily: "Poppins_300Light",
+              fontSize: 14,
+              textAlign: "center",
+            }}
+          >
+            click on a contact to add them as an{" "}
+            <Text
+              style={{
+                fontFamily: "Poppins_500Medium",
+              }}
+            >
+              aly
+            </Text>
+            .
+          </Text>
+          <SearchBar
+            searchPhrase={searchPhrase}
+            setSearchPhrase={setSearchPhrase}
+            clicked={clicked}
+            setClicked={setClicked}
+          />
 
-      <ScrollView style={{ width: "100%" }}>
-        <SearchBar
-          searchPhrase={searchPhrase}
-          setSearchPhrase={setSearchPhrase}
-          clicked={clicked}
-          setClicked={setClicked}
-        />
-
-        {contacts
-          .filter((c) =>
-            JSON.stringify(c).toLowerCase().includes(searchPhrase.toLowerCase())
-          )
-          .map((contact) => (
-            <ContactCard contact={contact} key={JSON.stringify(contact)} />
-          ))}
-      </ScrollView>
-    </SafeAreaView>
+          {data?.contacts
+            ?.filter((c) =>
+              JSON.stringify(c)
+                .toLowerCase()
+                .includes(searchPhrase.toLowerCase())
+            )
+            .map((contact) => (
+              <ContactCard
+                contact={contact}
+                key={JSON.stringify(contact)}
+                strikes={[
+                  data.first_strike ?? [],
+                  data.second_strike ?? [],
+                  data.third_strike ?? [],
+                ]}
+              />
+            ))}
+        </ScrollView>
+      </SafeAreaView>
+    </View>
   );
 }
