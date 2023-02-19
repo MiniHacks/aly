@@ -6,9 +6,11 @@ import {
   Image,
   ImageBackground,
   Button,
+  Pressable,
 } from "react-native";
 import SettingsBG from "../components/BackgroundSettings.png";
 import auth from "@react-native-firebase/auth";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 import cardStyles from "../components/CardStyles";
 
 export default function SettingsScreen({ stackNavigation }) {
@@ -90,9 +92,67 @@ export default function SettingsScreen({ stackNavigation }) {
           borderRadius: 10,
           backgroundColor: "#FFF",
           marginHorizontal: 20,
-          alignItems: "center",
         }}
-      ></View>
+      >
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "100%",
+            padding: 10,
+          }}
+        >
+          <MaterialCommunityIcons
+            name={"account"}
+            size={30}
+            color={"#3D3A9E"}
+          />
+          <Text
+            style={{
+              color: "#3D3A9E",
+              fontFamily: "Poppins_600SemiBold",
+              fontSize: 24,
+              paddingLeft: 20,
+            }}
+          >
+            Profile
+          </Text>
+        </View>
+      </View>
+      <View
+        style={{
+          ...cardStyles,
+          height: 80,
+          padding: 10,
+          marginTop: 20,
+          paddingVertical: 15,
+          borderRadius: 10,
+          backgroundColor: "#FFF",
+          marginHorizontal: 20,
+          flexDirection: "row",
+        }}
+      >
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "100%",
+            padding: 10,
+          }}
+        >
+          <MaterialCommunityIcons name={"bell"} size={30} color={"#3D3A9E"} />
+          <Text
+            style={{
+              color: "#3D3A9E",
+              fontFamily: "Poppins_600SemiBold",
+              fontSize: 24,
+              paddingLeft: 20,
+            }}
+          >
+            Notifications
+          </Text>
+        </View>
+      </View>
       <View
         style={{
           ...cardStyles,
@@ -105,7 +165,28 @@ export default function SettingsScreen({ stackNavigation }) {
           marginHorizontal: 20,
           alignItems: "center",
         }}
-      ></View>
+      >
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "100%",
+            padding: 10,
+          }}
+        >
+          <MaterialCommunityIcons name={"lock"} size={30} color={"#3D3A9E"} />
+          <Text
+            style={{
+              color: "#3D3A9E",
+              fontFamily: "Poppins_600SemiBold",
+              fontSize: 24,
+              paddingLeft: 20,
+            }}
+          >
+            Privacy & Security
+          </Text>
+        </View>
+      </View>
       <View
         style={{
           ...cardStyles,
@@ -116,30 +197,42 @@ export default function SettingsScreen({ stackNavigation }) {
           borderRadius: 10,
           backgroundColor: "#FFF",
           marginHorizontal: 20,
-          alignItems: "center",
         }}
-      ></View>
-      <View
-        style={{
-          ...cardStyles,
-          height: 80,
-          padding: 10,
-          marginTop: 20,
-          paddingVertical: 15,
-          borderRadius: 10,
-          backgroundColor: "#FFF",
-          marginHorizontal: 20,
-          alignItems: "center",
-        }}
-      ></View>
-      <Button
-        title={"Sign Out"}
-        onPress={() =>
-          auth()
-            .signOut()
-            .then(() => stackNavigation.navigate("Login"))
-        }
-      ></Button>
+      >
+        <Pressable
+          onPress={() =>
+            auth()
+              .signOut()
+              .then(() => stackNavigation.navigate("Login"))
+          }
+        >
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              width: "100%",
+              paddingLeft: 10,
+              paddingTop: 10,
+            }}
+          >
+            <MaterialCommunityIcons
+              name={"logout"}
+              size={30}
+              color={"#3D3A9E"}
+            />
+            <Text
+              style={{
+                color: "#3D3A9E",
+                fontFamily: "Poppins_600SemiBold",
+                fontSize: 24,
+                paddingLeft: 20,
+              }}
+            >
+              Logout
+            </Text>
+          </View>
+        </Pressable>
+      </View>
     </ImageBackground>
   );
 }
