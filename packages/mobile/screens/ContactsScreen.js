@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Button, ScrollView, Text, View } from "react-native";
+import { Button, SafeAreaView, ScrollView, Text, View } from "react-native";
 import Contacts from "react-native-contacts";
+import ContactCard from "../components/ContactCard";
 
 export default function HomeScreen() {
   const [contacts, setContacts] = useState([]);
@@ -13,7 +14,7 @@ export default function HomeScreen() {
     });
   };
   return (
-    <View
+    <SafeAreaView
       style={{
         flex: 1,
         justifyContent: "center",
@@ -26,11 +27,9 @@ export default function HomeScreen() {
 
       <ScrollView>
         {contacts.map((contact) => (
-          <Text key={contact.recordID}>
-            {JSON.stringify(contact.phoneNumbers?.[0]?.number)}
-          </Text>
+          <ContactCard contact={contact} key={JSON.stringify(contact)} />
         ))}
       </ScrollView>
-    </View>
+    </SafeAreaView>
   );
 }
