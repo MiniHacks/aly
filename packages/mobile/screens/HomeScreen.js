@@ -1,17 +1,25 @@
 import React from "react";
-import { SafeAreaView, Text, View, ScrollView, TouchableOpacity } from "react-native";
+import {
+  SafeAreaView,
+  Text,
+  View,
+  ScrollView,
+  TouchableOpacity,
+} from "react-native";
 import StrikeButton from "../components/StrikeButton";
 import StreakIcon from "../components/StreakIcon";
 import NextUpButton from "../components/NextUpButton";
 import { StyleSheet } from "react-native";
+import TaskList from "../components/TaskList";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
 
 function AddTaskButton({ navigation }) {
   return (
     <TouchableOpacity
-      onPress={() => navigation.navigate('AddTaskScreen')}
-      style={styles.touchableopacity}
+      onPress={() => navigation.navigate("AddTaskScreen")}
+      style={styles.addtaskbutton}
     >
-      <Text style={{ color: 'white', fontSize: 24 }}>+</Text>
+      <MaterialCommunityIcons name="plus" color={"blue"} size={50} />
     </TouchableOpacity>
   );
 }
@@ -29,7 +37,7 @@ function getDate() {
   );
 }
 
-export default function HomeScreen( navigation ) {
+export default function HomeScreen(navigation) {
   return (
     <SafeAreaView
       style={{
@@ -37,6 +45,7 @@ export default function HomeScreen( navigation ) {
         backgroundColor: "#5F5BDD",
       }}
     >
+      <AddTaskButton navigation={navigation} />
       <ScrollView>
         <View
           style={{
@@ -78,12 +87,41 @@ export default function HomeScreen( navigation ) {
           style={{
             flex: 1,
             alignItems: "center",
-            marginBottom: 10,
+            marginBottom: 20,
           }}
         >
           <NextUpButton event={0} />
         </View>
-      <AddTaskButton navigation={ navigation }/>
+        <View
+          style={{
+            flex: 1,
+            marginBottom: 10,
+          }}
+        >
+          <Text
+            style={{
+              fontFamily: "Poppins",
+              fontStyle: "normal",
+              fontWeight: "600",
+              fontSize: 24,
+              lineHeight: 42,
+              color: "#FFFFFF",
+              marginLeft: "7.5%",
+              marginRight: "7.5%",
+              paddingBottom: 60,
+            }}
+          >
+            i need to...
+          </Text>
+        </View>
+        <View
+          style={{
+            backgroundColor: "#EEF2F6",
+            paddingBottom: 200,
+          }}
+        >
+          <TaskList />
+        </View>
       </ScrollView>
     </SafeAreaView>
   );
@@ -98,15 +136,16 @@ const styles = StyleSheet.create({
     lineHeight: 42,
     color: "#FFFFFF",
   },
-  touchableopacity: {
-    position: 'static',
-    backgroundColor: '#FF8774',
-    width: 50,
-    height: 50,
-    left: 315,
-    top: 325,
+  addtaskbutton: {
+    position: "absolute",
+    backgroundColor: "#FFF",
+    width: 60,
+    height: 60,
     borderRadius: 50,
-    alignItems: 'center',
-    justifyContent: 'center',
-  }
+    bottom: 10,
+    right: 10,
+    alignItems: "center",
+    justifyContent: "center",
+    zIndex: 1,
+  },
 });

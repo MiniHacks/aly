@@ -62,15 +62,10 @@ const styles = StyleSheet.create({
   bigbox: {
     flex: 1,
     flexDirection: "row",
-    dropShadow: "0px 4px 4px rgba(0, 0, 0, 0.25)",
     borderRadius: 10,
     backgroundColor: "#FFF",
     width: "85%",
     overflow: "hidden",
     maxHeight: 60,
-    shadowColor: "#171717",
-    shadowOffset: { width: -2, height: 4 },
-    shadowOpacity: 0.2,
-    shadowRadius: 3,
   },
 });
