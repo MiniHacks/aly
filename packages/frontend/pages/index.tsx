@@ -210,7 +210,7 @@ const Home: NextPage = () => {
         style={{
           position: "absolute",
           top: "6%",
-          right: "230px",
+          right: "250px",
         }}
       />
       <Features />
