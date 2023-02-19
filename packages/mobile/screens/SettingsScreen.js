@@ -4,6 +4,7 @@ import {
   View,
   SafeAreaView,
   Image,
+  Switch,
   ImageBackground,
   Button,
   Pressable,
@@ -15,6 +16,8 @@ import cardStyles from "../components/CardStyles";
 
 export default function SettingsScreen({ stackNavigation }) {
   const user = auth().currentUser;
+  const [isEnabled, setIsEnabled] = React.useState(false);
+  const toggleSwitch = () => setIsEnabled((previousState) => !previousState);
   return (
     <ImageBackground
       style={{
@@ -29,7 +32,7 @@ export default function SettingsScreen({ stackNavigation }) {
             color: "#fff",
             fontSize: 30,
             fontFamily: "Poppins_600SemiBold",
-            marginTop: 40,
+            marginTop: 50,
             marginLeft: 125,
           }}
         >
@@ -49,6 +52,7 @@ export default function SettingsScreen({ stackNavigation }) {
             width: 50,
             height: 50,
             borderRadius: 50,
+            overflow: "hidden",
             marginLeft: 20,
           }}
         >
@@ -136,21 +140,44 @@ export default function SettingsScreen({ stackNavigation }) {
           style={{
             display: "flex",
             flexDirection: "row",
-            width: "100%",
-            padding: 10,
+            width: "80%",
           }}
         >
-          <MaterialCommunityIcons name={"bell"} size={30} color={"#3D3A9E"} />
-          <Text
+          <View
             style={{
-              color: "#3D3A9E",
-              fontFamily: "Poppins_600SemiBold",
-              fontSize: 24,
-              paddingLeft: 20,
+              display: "flex",
+              flexDirection: "row",
+              width: "100%",
+              padding: 10,
             }}
           >
-            Notifications
-          </Text>
+            <MaterialCommunityIcons name={"bell"} size={30} color={"#3D3A9E"} />
+            <Text
+              style={{
+                color: "#3D3A9E",
+                fontFamily: "Poppins_600SemiBold",
+                fontSize: 24,
+                paddingLeft: 20,
+              }}
+            >
+              Notifications
+            </Text>
+          </View>
+          <View
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              padding: 10,
+            }}
+          >
+            <Switch
+              trackColor={{ false: "#767577", true: "#3D3A9E" }}
+              thumbColor={isEnabled ? "#fff" : "#fff"}
+              ios_backgroundColor="#3e3e3e"
+              onValueChange={toggleSwitch}
+              value={isEnabled}
+            />
+          </View>
         </View>
       </View>
       <View
@@ -185,6 +212,43 @@ export default function SettingsScreen({ stackNavigation }) {
           >
             Privacy & Security
           </Text>
+        </View>
+      </View>
+      <View
+        style={{
+          ...cardStyles,
+          height: 80,
+          marginTop: 20,
+          padding: 10,
+          paddingVertical: 15,
+          borderRadius: 10,
+          backgroundColor: "#FFF",
+          marginHorizontal: 20,
+        }}
+      >
+        <View
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            width: "100%",
+            padding: 10,
+          }}
+        >
+          <MaterialCommunityIcons name={"help"} size={30} color={"#3D3A9E"} />
+          <Pressable
+            onPress={() => alert("Ask the people in front of you! :)")}
+          >
+            <Text
+              style={{
+                color: "#3D3A9E",
+                fontFamily: "Poppins_600SemiBold",
+                fontSize: 24,
+                paddingLeft: 20,
+              }}
+            >
+              Support
+            </Text>
+          </Pressable>
         </View>
       </View>
       <View
