@@ -12,13 +12,17 @@
     "@chakra-ui/react": "^2.3.2",
     "@emotion/react": "^11",
     "@emotion/styled": "^11",
+    "@firebase/auth": "^0.21.3",
+    "firebase": "^9.17.1",
     "framer-motion": "^6",
+    "js-cookie": "^3.0.1",
     "next": "12.3.0",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.7.1"
   },
   "devDependencies": {
+    "@types/firebase": "^3.2.1",
     "@types/node": "18.7.18",
     "@types/react": "18.0.20",
     "@types/react-dom": "18.0.6",

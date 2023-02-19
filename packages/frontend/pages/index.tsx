@@ -12,10 +12,43 @@ import React from "react";
 import { FiChrome } from "react-icons/fi";
 import { SiAppstore } from "react-icons/si";
 import { BsArrowRight } from "react-icons/bs";
+import { useRouter } from "next/router";
+import firebase from "firebase/compat/app";
 import PageLayout from "../components/Layout/PageLayout";
 import NavBar from "../components/NavBar";
+import "firebase/compat/auth";
+
+import initFirebase from "../util/config";
+
+initFirebase();
+
+const provider = new firebase.auth.GoogleAuthProvider();
 
 const Home: NextPage = () => {
+  const router = useRouter();
+  const signIn = () => {
+    firebase
+      .auth()
+      .signInWithPopup(provider)
+      .then((result) => {
+        /** @type {firebase.auth.OAuthCredential} */
+        const { credential } = result;
+
+        // This gives you a Google Access Token. You can use it to access the Google API.
+        const token = (credential as unknown as { accessToken: string })
+          ?.accessToken;
+        // The signed-in user info.
+        const { user } = result;
+        // IdP data available in result.additionalUserInfo.profile.
+        // eslint-disable-next-line no-console
+        console.log({ token, user });
+        router.push("/dash");
+      })
+      .catch((error) => {
+        // eslint-disable-next-line no-console
+        console.error(error);
+      });
+  };
   return (
     <PageLayout title={"aly"}>
       <Box zIndex={-1} position={"relative"} marginTop={"-130px"}>
@@ -127,6 +160,7 @@ const Home: NextPage = () => {
               _hover={{
                 backgroundColor: "rgba(255, 255, 255, 0.7)",
               }}
+              onClick={() => signIn()}
             >
               <Text fontFamily={"Poppins"} fontWeight={"500"}>
                 start now
