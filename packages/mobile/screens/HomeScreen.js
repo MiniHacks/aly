@@ -44,7 +44,7 @@ export default function HomeScreen(navigation) {
       <View
         style={{
           backgroundColor: "#EEF2F6",
-          height: 300,
+          height: 200,
           position: "absolute",
           bottom: 0,
           left: 0,
