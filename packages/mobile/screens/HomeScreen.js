@@ -19,7 +19,7 @@ function AddTaskButton({ navigation }) {
       onPress={() => navigation.navigate("AddTaskScreen")}
       style={styles.addtaskbutton}
     >
-      <MaterialCommunityIcons name="plus" color={"blue"} size={50} />
+      <MaterialCommunityIcons name="plus" color={"#3D3A9E"} size={50} />
     </TouchableOpacity>
   );
 }
