@@ -23,7 +23,7 @@ export default function NextUpButton({ event }) {
         <Entypo name="location-pin" size={30} color="#A42A73" />
       </View>
       <View style={styles.box1}>
-        <Text style={styles.text1}>Be at MetroTech</Text>
+        <Text style={styles.text1}>be at metrotech</Text>
         <Text style={styles.text2}>by 11:00 AM</Text>
       </View>
     </View>

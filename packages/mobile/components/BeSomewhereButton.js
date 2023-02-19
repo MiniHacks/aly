@@ -28,7 +28,7 @@ function BeSomewhereButton({ navigation }) {
         onPress={() => navigation.navigate("BeSomewhere")}
         style={styles.button}
       >
-        <Text style={styles.text1}>Be Somewhere</Text>
+        <Text style={styles.text1}>be somewhere</Text>
       </Pressable>
     </View>
   );

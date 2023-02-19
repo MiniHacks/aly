@@ -28,7 +28,7 @@ function DoSomethingButton({ navigation }) {
         onPress={() => navigation.navigate("DoSomething")}
         style={styles.button}
       >
-        <Text style={styles.text1}>Do Something</Text>
+        <Text style={styles.text1}>do something</Text>
       </Pressable>
     </View>
   );

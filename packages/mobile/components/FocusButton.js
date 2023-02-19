@@ -28,7 +28,7 @@ function FocusButton({ navigation }) {
         onPress={() => navigation.navigate("Focus")}
         style={styles.button}
       >
-        <Text style={styles.text1}>Focus</Text>
+        <Text style={styles.text1}>focus</Text>
       </Pressable>
     </View>
   );
