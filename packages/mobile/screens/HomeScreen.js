@@ -39,14 +39,28 @@ function getDate() {
 
 export default function HomeScreen(navigation) {
   return (
-    <SafeAreaView
+    <View
       style={{
         flex: 1,
         backgroundColor: "#5F5BDD",
       }}
     >
       <AddTaskButton navigation={navigation} />
-      <ScrollView>
+      <View
+        style={{
+          backgroundColor: "#EEF2F6",
+          height: 300,
+          position: "absolute",
+          bottom: 0,
+          left: 0,
+          width: "100%",
+        }}
+      />
+      <ScrollView
+        style={{
+          paddingTop: 55,
+        }}
+      >
         <View
           style={{
             flex: 1,
@@ -123,7 +137,7 @@ export default function HomeScreen(navigation) {
           <TaskList />
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </View>
   );
 }
 

@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleSheet, Text, View } from "react-native";
 import { Entypo } from "@expo/vector-icons";
+import cardStyles from "./CardStyles";
 export default function TaskList() {
-  return <View style={styles.bigbox}></View>;
+  return <View style={[styles.bigbox, cardStyles]}></View>;
 }
 const styles = StyleSheet.create({
   bigbox: {
@@ -10,11 +11,8 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     borderRadius: 10,
     backgroundColor: "#FFF",
-    width: "85%",
     height: 200,
-    overflow: "hidden",
-    marginLeft: "7.5%",
-    marginRight: "7.5%",
+    marginHorizontal: 20,
     marginTop: -70,
   },
 });
