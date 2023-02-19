@@ -7,7 +7,12 @@ export default function DoSomething(navigation) {
   const [text, onChangeText] = React.useState("");
 
   return (
-    <SafeAreaView>
+    <SafeAreaView
+      style={{
+        justifyContent: "center",
+        alignItems: "center",
+      }}
+    >
       <TextInput
         style={styles.input}
         onChangeText={onChangeText}
