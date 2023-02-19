@@ -11,7 +11,7 @@ import SettingsBG from "../components/BackgroundSettings.png";
 import auth from "@react-native-firebase/auth";
 import cardStyles from "../components/CardStyles";
 
-export default function SettingsScreen(stackNavigation) {
+export default function SettingsScreen({ stackNavigation }) {
   const user = auth().currentUser;
   return (
     <ImageBackground
