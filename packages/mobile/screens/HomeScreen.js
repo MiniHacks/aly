@@ -1,18 +1,14 @@
-import React from "react";
-import {
-  Pressable,
-  ScrollView,
-  StyleSheet,
-  Text,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import React, { useEffect, useState } from "react";
+import { Platform, ScrollView, StyleSheet, Text, View } from "react-native";
 import StrikeButton from "../components/StrikeButton";
 import StreakIcon from "../components/StreakIcon";
 import NextUpButton from "../components/NextUpButton";
 import TaskList from "../components/TaskList";
 // import BeSomewhereButton from "../components/BeSomewhereButton";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import * as Location from "expo-location";
+import Device from "expo-device";
+import firestore from "@react-native-firebase/firestore";
+import auth from "@react-native-firebase/auth";
 
 function getDate() {
   const dayName = new Date().toLocaleString("en-us", { weekday: "long" });
@@ -24,6 +20,52 @@ function getDate() {
 }
 
 export default function HomeScreen({ navigation }) {
+  const [location, setLocation] = useState(null);
+  const [errorMsg, setErrorMsg] = useState(null);
+  const [data, setData] = useState(null);
+
+  useEffect(() => {
+    (async () => {
+      let { status } = await Location.requestForegroundPermissionsAsync();
+      if (status !== "granted") {
+        setErrorMsg("Permission to access location was denied");
+        return;
+      }
+
+      let location = await Location.getCurrentPositionAsync({});
+      setLocation(location);
+    })();
+  }, []);
+
+  let text = "Waiting..";
+  if (errorMsg) {
+    text = errorMsg;
+  } else if (location) {
+    text = JSON.stringify(location);
+  }
+
+  useEffect(() => {
+    firestore()
+      .collection("users")
+      .doc(auth().currentUser.uid)
+      .onSnapshot((doc) => {
+        setData(doc.data());
+      });
+
+    firestore()
+      .collection("users")
+      .doc(auth().currentUser.uid)
+      .get()
+      .then((doc) => {
+        if (doc.exists) {
+          console.log("Document data:", doc.data());
+        } else {
+          // doc.data() will be undefined in this case
+          console.log("No such document!");
+        }
+      });
+  }, []);
+
   return (
     <View
       style={{
@@ -43,7 +85,7 @@ export default function HomeScreen({ navigation }) {
       />
       <ScrollView
         style={{
-          paddingTop: 55,
+          paddingTop: 85,
         }}
       >
         <View
@@ -57,7 +99,7 @@ export default function HomeScreen({ navigation }) {
           }}
         >
           <Text style={styles.date}>{getDate()}</Text>
-          <StreakIcon streak={1} />
+          <StreakIcon streak={data?.strikes ? 0 : 1} />
         </View>
         <View
           style={{
@@ -66,7 +108,7 @@ export default function HomeScreen({ navigation }) {
             marginBottom: 10,
           }}
         >
-          <StrikeButton strikeCount={0} />
+          <StrikeButton strikeCount={data?.strikes ?? 0} />
         </View>
         <Text
           style={{
@@ -117,6 +159,7 @@ export default function HomeScreen({ navigation }) {
         >
           <TaskList navigation={navigation} />
         </View>
+        <Text>{text}</Text>
       </ScrollView>
     </View>
   );

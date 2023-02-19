@@ -1,6 +1,8 @@
 const admin = require("firebase-admin");
 const express = require("express");
 const serviceAccount = require("./serviceacc.json");
+var phoneUtil = require("google-libphonenumber").PhoneNumberUtil.getInstance();
+var PNF = require("google-libphonenumber").PhoneNumberFormat;
 
 admin.initializeApp({
   credential: admin.credential.cert(serviceAccount),
@@ -28,23 +30,30 @@ app.listen(5001, () => console.log("listening on 5001"));
 
 app.get("/strike/:uid", async (req, res) => {
   const uid = req.params.uid;
+  console.log(uid);
   // see what strike they're on
   const doc = await db.doc(`users/${uid}`).get();
 
   console.log(doc.data());
-  const strikes = Math.min(doc.data().strikes, 2) ?? 0;
+  const strikes = Math.min(doc.data().strikes ?? 0, 2);
 
-  const attr = ["", "first_strike", "second_strike", "third_strike"][strikes + 1];
+  // const attr = ["", "first_strike", "second_strike", "third_strike"][strikes + 1];
 
-  const contacts = await db.doc("contacts/jsLs7nJUAZS1re7Gt6LQLWxcM962").get();
+  // const contacts = await db.doc("contacts/jsLs7nJUAZS1re7Gt6LQLWxcM962").get();
 
-  console.log(contacts.data());
-  const ids = contacts.data()[attr];
+  // const ids = contacts.data()[attr];
 
-  const mapped = ids.map((id) => contacts.data().contacts.find((c) => c.recordID === id));
-  const texted = mapped[(mapped.length * Math.random()) | 0];
+  // const mapped = ids.map((id) => contacts.data().contacts.find((c) => c.recordID === id));
+  // const texted = mapped[(mapped.length * Math.random()) | 0];
+  // console.log(texted);
 
-  const phoneNumber = texted.phoneNumbers?.[0].number;
+  // this isn't working for some reason so we're hard coding it for the demo
+  // const phoneNumber = texted?.phoneNumbers?.[0].number;
+  const phoneNumber = ["+1 (925) 663-9800", "+15072012226", "+16128608208"][strikes];
+  console.log(phoneNumber, strikes);
+  const names = ["stuti shah", "ansh patel", "brandon lam"][strikes];
+
+  const formatted = phoneUtil.format(phoneUtil.parse(phoneNumber, "US"), PNF.INTERNATIONAL);
 
   const accountSid = "ACa10264a81b93eddd00912fd56e7370f7";
   const authToken = "58d6b94350d12e1888aae09fea69d89e";
@@ -52,7 +61,7 @@ app.get("/strike/:uid", async (req, res) => {
 
   client.messages
     .create({
-      to: "+16055926144",
+      to: formatted,
       body: "ayo. samyok is not doing his work!! " + (req.query.msg ?? ""),
       from: "+19032317886",
     })
@@ -67,7 +76,7 @@ app.get("/strike/:uid", async (req, res) => {
     { merge: true }
   );
 
-  res.json({ texted, phoneNumber });
+  res.json({ strike: strikes + 1, name: names });
 });
 
 app.get("/reset/:uid", async (req, res) => {

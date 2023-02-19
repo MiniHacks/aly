@@ -9,6 +9,7 @@
   "dependencies": {
     "express": "^4.18.1",
     "firebase-admin": "^11.5.0",
+    "google-libphonenumber": "^3.2.32",
     "socket.io": "^4.5.2",
     "twilio": "^4.7.2"
   },
