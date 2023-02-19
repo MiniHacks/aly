@@ -1,16 +1,19 @@
 import React from "react";
-import { View, Image, Text, StyleSheet } from "react-native";
+import { View, Text, StyleSheet } from "react-native";
 const ContactCard = ({ contact }) => {
   return (
     <View style={styles.container}>
       <View style={styles.avatarContainer}>
-        {/*<Image*/}
-        {/*  source={avatar ? { uri: avatar } : require("../assets/avatar.png")}*/}
-        {/*  style={styles.avatar}*/}
-        {/*/>*/}
+        <View style={styles.avatar}>
+          <Text style={styles.txt}>{contact?.givenName[0]}</Text>
+        </View>
       </View>
-      <Text style={styles.name}>{contact.givenName}</Text>
-      <Text style={styles.number}>{contact.phoneNumbers[0]?.number}</Text>
+      <View style={styles.infoContainer}>
+        <Text style={styles.name}>
+          {contact.givenName + " " + contact.familyName + " "}
+        </Text>
+        <Text style={styles.number}>{contact.phoneNumbers[0]?.number}</Text>
+      </View>
     </View>
   );
 };
@@ -19,9 +22,12 @@ const styles = StyleSheet.create({
   container: {
     display: "flex",
     flexDirection: "row",
-    alignItems: "center",
-    justifyContent: "center",
-    width: "100%",
+    justifyContent: "flex-start",
+    width: "120%",
+    paddingLeft: 20,
+    borderBottomWidth: 1,
+    borderBottomColor: "#d9d9d9",
+    paddingVertical: 10,
   },
   avatarContainer: {
     width: 50,
@@ -29,26 +35,38 @@ const styles = StyleSheet.create({
     borderRadius: 25,
     backgroundColor: "#726FE4",
     display: "flex",
-    alignItems: "center",
     justifyContent: "center",
-    marginRight: 10,
+    alignItems: "center",
+    marginRight: 15,
   },
   avatar: {
     width: 40,
     height: 40,
     borderRadius: 20,
   },
+  txt: {
+    color: "white",
+    fontSize: 20,
+    fontWeight: "bold",
+    textAlign: "center",
+    marginTop: 10,
+  },
   infoContainer: {
     display: "flex",
     flexDirection: "column",
     alignItems: "flex-start",
-    justifyContent: "center",
   },
   name: {
     fontStyle: "normal",
     fontSize: 16,
     lineHeight: 24,
     color: "black",
+  },
+  number: {
+    fontStyle: "normal",
+    fontSize: 14,
+    lineHeight: 21,
+    color: "#888",
   },
 });
 

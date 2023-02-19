@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Button, SafeAreaView, ScrollView, Text, View } from "react-native";
+import { Button, SafeAreaView, ScrollView, Text } from "react-native";
 import Contacts from "react-native-contacts";
 import ContactCard from "../components/ContactCard";
 
@@ -25,7 +25,7 @@ export default function HomeScreen() {
       {!loading && <Button title={"Get Contacts"} onPress={getContacts} />}
       {loading && <Text>Loading...</Text>}
 
-      <ScrollView>
+      <ScrollView style={{ width: "100%" }}>
         {contacts.map((contact) => (
           <ContactCard contact={contact} key={JSON.stringify(contact)} />
         ))}
