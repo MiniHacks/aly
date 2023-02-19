@@ -57,7 +57,7 @@ export default function HomeScreen({ navigation }) {
           }}
         >
           <Text style={styles.date}>{getDate()}</Text>
-          <StreakIcon streak={1} />
+          <StreakIcon streak={7} />
         </View>
         <View
           style={{

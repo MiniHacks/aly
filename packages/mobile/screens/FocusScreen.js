@@ -11,7 +11,7 @@ import {
 import DatePicker from "react-native-date-picker";
 import TaskBG from "../components/TaskBG.png";
 
-export default function FocusScreen(navigation) {
+export default function FocusScreen({ navigation }) {
   const [date, setDate] = useState(new Date());
   const [date2, setDate2] = useState(new Date());
 
@@ -31,9 +31,10 @@ export default function FocusScreen(navigation) {
         <Text style={styles.text}>end time</Text>
         <DatePicker date={date2} onDateChange={setDate2} />
         <Pressable
+          onPress={() => navigation.navigate("Home")}
           style={{
             backgroundColor: "#fff",
-            width: 60,
+            width: 80,
             height: 40,
             borderRadius: 20,
             overflow: "hidden",
@@ -47,7 +48,9 @@ export default function FocusScreen(navigation) {
               textAlign: "center",
               marginTop: 10,
             }}
-          ></Text>
+          >
+            Submit
+          </Text>
         </Pressable>
       </View>
     </ImageBackground>
