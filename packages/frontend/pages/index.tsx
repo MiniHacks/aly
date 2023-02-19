@@ -16,6 +16,7 @@ import { useRouter } from "next/router";
 import firebase from "firebase/compat/app";
 import PageLayout from "../components/Layout/PageLayout";
 import NavBar from "../components/NavBar";
+import Features from "../components/Features";
 import "firebase/compat/auth";
 
 import initFirebase from "../util/config";
@@ -115,7 +116,7 @@ const Home: NextPage = () => {
           </defs>
         </chakra.svg>
       </Box>
-      <HStack mt={170}>
+      <HStack mt={170} mb={450}>
         <VStack
           justifyItems={"space-between"}
           ml={200}
@@ -207,10 +208,11 @@ const Home: NextPage = () => {
         width={"375px"}
         style={{
           position: "absolute",
-          top: "25%",
+          top: "4%",
           right: "250px",
         }}
       />
+      <Features />
     </PageLayout>
   );
 };
