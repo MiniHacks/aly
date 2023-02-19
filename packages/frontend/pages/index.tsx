@@ -8,7 +8,7 @@ import {
   Text,
   VStack,
 } from "@chakra-ui/react";
-import React from "react";
+import React, { useEffect } from "react";
 import { FiChrome } from "react-icons/fi";
 import { SiAppstore } from "react-icons/si";
 import { BsArrowRight } from "react-icons/bs";
@@ -28,6 +28,17 @@ const provider = new firebase.auth.GoogleAuthProvider();
 
 const Home: NextPage = () => {
   const router = useRouter();
+  useEffect(() => {
+    if (typeof window !== "undefined") {
+      window?.particlesJS?.load(
+        "particles-js",
+        "/particlesjs-config.json",
+        () => {
+          console.log("callback - particles.js config loaded");
+        }
+      );
+    }
+  }, []);
   const signIn = () => {
     firebase
       .auth()

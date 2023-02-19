@@ -17,8 +17,20 @@ export default function Document(): JSX.Element {
       </Head>
       <body>
         <ColorModeScript initialColorMode={theme.config.initialColorMode} />
+        <div
+          id={"particles-js"}
+          style={{
+            position: "absolute",
+            top: 0,
+            left: 0,
+            width: "100vw",
+            height: "100vh",
+          }}
+        />
         <Main />
         <NextScript />
+        {/* eslint-disable-next-line @next/next/no-sync-scripts */}
+        <script src={"particles.min.js"} />
       </body>
     </Html>
   );
