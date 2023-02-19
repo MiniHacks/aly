@@ -87,7 +87,7 @@ const Dash = () => {
   const u = user as unknown as User;
   const enabled = data?.focusMode?.enabled;
   const loading = data === null;
-  const strikes = data?.focusMode?.strikes ?? 0;
+  const strikes = data?.strikes ?? -1;
   return (
     <VStack p={2} spacing={2} height={"580px"}>
       <Card w={"full"}>
@@ -101,11 +101,14 @@ const Dash = () => {
           <Stack divider={<StackDivider />} spacing={4}>
             <Box>
               <Heading size={"lg"} m={0}>
-                {
-                  ["you're on track", "strike 1", "strike 2", "strike 3"][
-                    strikes
-                  ]
-                }
+                {strikes > -1
+                  ? [
+                      "you're on track",
+                      "strike 1 :c",
+                      "strike 2 :/",
+                      "strike 3 :(",
+                    ][strikes]
+                  : "loading..."}
               </Heading>
               <Text pt={"2"} fontSize={"sm"}>
                 your <b>aly</b>s will help you rebuild your streak

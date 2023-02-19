@@ -1,4 +1,5 @@
 const BASE_URL = "http://localhost:8000/web_analysis";
+const FOCUS_URL = "http://localhost:5001/focus";
 
 console.log("injection.js loaded");
 setInterval(() => {
@@ -22,6 +23,15 @@ setInterval(() => {
   })
     .then((r) => r.json())
     .then((r) => {
-      console.log(r);
+      if (!r?.focused) {
+        fetch(FOCUS_URL)
+          .then((r) => r.json())
+          .then((fr) => {
+            console.log("[aly] focus", r);
+            if (fr.focusMode.enabled) {
+              alert("hi");
+            }
+          });
+      }
     });
 }, 10000);
