@@ -1,18 +1,38 @@
 import React from "react";
-import { Pressable, StyleSheet, Text, View } from "react-native";
-import { Entypo } from "@expo/vector-icons";
-import cardStyles from "./CardStyles";
-export default function BeSomewhereButton(navigation) {
-  return <View style={[styles.bigbox, cardStyles]}></View>;
+import {
+  StyleSheet,
+  Text,
+  View,
+  Pressable,
+  TouchableOpacity,
+} from "react-native";
+import { MaterialCommunityIcons } from "@expo/vector-icons";
+function BeSomewhereButton({ navigation }) {
+  return (
+    <Pressable
+      onPress={() => navigation.navigate("BeSomewhere")}
+      style={styles.button}
+    >
+      <Text style={styles.text}>Be Somewhere</Text>
+    </Pressable>
+  );
 }
+
 const styles = StyleSheet.create({
-  bigbox: {
-    flex: 1,
-    flexDirection: "column",
+  button: {
+    backgroundColor: "#3D3A9E",
     borderRadius: 10,
-    backgroundColor: "#FFF",
-    height: 200,
-    marginHorizontal: 20,
-    marginTop: -70,
+    padding: 10,
+    margin: 10,
+    width: 200,
+    alignSelf: "center",
+  },
+  text: {
+    color: "#FFF",
+    fontFamily: "Poppins_600SemiBold",
+    fontSize: 24,
+    textAlign: "center",
   },
 });
+
+export default BeSomewhereButton;

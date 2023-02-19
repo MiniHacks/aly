@@ -8,6 +8,9 @@ import SettingsScreen from "./screens/SettingsScreen";
 import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import ContactsScreen from "./screens/ContactsScreen";
+import BeSomewhereScreen from "./screens/BeSomewhereScreen";
+import FocusScreen from "./screens/FocusScreen";
+import DoSomethingScreen from "./screens/DoSomethingScreen";
 import {
   Poppins_100Thin,
   Poppins_100Thin_Italic,
@@ -84,6 +87,9 @@ function MyTabs({ navigation: stackNavigation }) {
           ),
         }}
       />
+      <Tab.Screen name="BeSomewhere" component={BeSomewhereScreen} />
+      <Tab.Screen name="Focus" component={FocusScreen} />
+      <Tab.Screen name="DoSomething" component={DoSomethingScreen} />
     </Tab.Navigator>
   );
 }
