@@ -17,6 +17,7 @@ import firebase from "firebase/compat/app";
 import PageLayout from "../components/Layout/PageLayout";
 import NavBar from "../components/NavBar";
 import Features from "../components/Features";
+import Footer from "../components/Footer";
 import "firebase/compat/auth";
 
 import initFirebase from "../util/config";
@@ -205,14 +206,15 @@ const Home: NextPage = () => {
       </HStack>
       <Image
         src={"iphone.png"}
-        width={"375px"}
+        width={"345px"}
         style={{
           position: "absolute",
-          top: "4%",
-          right: "250px",
+          top: "6%",
+          right: "230px",
         }}
       />
       <Features />
+      <Footer />
     </PageLayout>
   );
 };
