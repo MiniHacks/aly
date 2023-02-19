@@ -18,7 +18,8 @@ import NavBar from "../components/NavBar";
 const Home: NextPage = () => {
   return (
     <PageLayout title={"aly"}>
-      <Box zIndex={-1} position={"relative"} marginTop={"-130px"}>
+      <NavBar />
+      <Box zIndex={-1} position={"relative"} marginTop={"-140px"}>
         <chakra.svg
           position={"absolute"}
           width={"100%"}
@@ -81,7 +82,6 @@ const Home: NextPage = () => {
           </defs>
         </chakra.svg>
       </Box>
-      <NavBar />
       <HStack mt={170}>
         <VStack
           justifyItems={"space-between"}
@@ -173,7 +173,7 @@ const Home: NextPage = () => {
         width={"375px"}
         style={{
           position: "absolute",
-          top: "40%",
+          top: "25%",
           right: "250px",
         }}
       />
