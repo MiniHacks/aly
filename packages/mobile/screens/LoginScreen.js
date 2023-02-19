@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { View, Text, SafeAreaView, Pressable } from "react-native";
+import { View, Text, SafeAreaView, Pressable, Image } from "react-native";
 import auth from "@react-native-firebase/auth";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import firestore from "@react-native-firebase/firestore";
@@ -56,7 +56,6 @@ function LoginScreen() {
 
   if (!user) {
     return (
-      <View>
         <SafeAreaView
           style={{
             display: "flex",
@@ -65,6 +64,9 @@ function LoginScreen() {
             height: "100%",
           }}
         >
+          <View>
+          <Image style={{
+          }} source={require("../components/login_gradient.png")} />
           <Pressable
             onPress={() =>
               onGoogleButtonPress().then(() =>
@@ -72,10 +74,11 @@ function LoginScreen() {
               )
             }
           >
-            <Text>Login</Text>
+            <Text color={"black"}>Login</Text>
+
           </Pressable>
+          </View>
         </SafeAreaView>
-      </View>
     );
   }
 
