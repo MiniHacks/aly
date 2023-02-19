@@ -34,18 +34,17 @@ export default function HomeScreen() {
 
   const getContacts = () => {
     setLoading(true);
-    Promise.all([
-      Contacts.getAll(),
-      new Promise((r) => setTimeout(r, 750)),
-    ]).then(([contacts, _]) => {
-      setLoading(false);
-      firestore().collection("contacts").doc(auth().currentUser.uid).update(
-        {
-          contacts: contacts,
-        },
-        { merge: true }
-      );
-    });
+    Promise.all([Contacts.getAll(), new Promise((r) => setTimeout(r, 750))])
+      .then(([contacts, _]) => {
+        setLoading(false);
+        firestore().collection("contacts").doc(auth().currentUser.uid).set(
+          {
+            contacts: contacts,
+          },
+          { merge: true }
+        );
+      })
+      .catch(console.error);
   };
 
   return (
