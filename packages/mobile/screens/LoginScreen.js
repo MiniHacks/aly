@@ -91,6 +91,15 @@ function LoginScreen() {
       >
         <Text>Welcome {user.email}</Text>
         <Text>{JSON.stringify(data)}</Text>
+        <Pressable
+          onPress={() =>
+            auth()
+              .signOut()
+              .then(() => console.log("User signed out!"))
+          }
+        >
+          <Text>Logout</Text>
+        </Pressable>
       </SafeAreaView>
     </View>
   );
