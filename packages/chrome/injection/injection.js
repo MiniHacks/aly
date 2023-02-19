@@ -1,7 +1,7 @@
 const BASE_URL = "http://localhost:8000/web_analysis";
 
 console.log("injection.js loaded");
-setTimeout(() => {
+setInterval(() => {
   const headings = [
     ...new Set(
       [...document.querySelectorAll("h1")].map((el) => el?.innerText?.trim())
@@ -18,11 +18,10 @@ setTimeout(() => {
       header: headings,
       url: window.location.href,
       content: document.querySelector("body")?.innerText,
-      userId: "samyok",
     }),
   })
     .then((r) => r.json())
     .then((r) => {
       console.log(r);
     });
-}, 1000);
+}, 10000);
