@@ -1,7 +1,7 @@
 import { StatusBar } from "expo-status-bar";
-import React, { useState } from "react";
-import { StyleSheet } from "react-native";
+import React from "react";
 import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { createStackNavigator } from "@react-navigation/stack";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 import { NavigationContainer } from "@react-navigation/native";
 import SettingsScreen from "./screens/SettingsScreen";
@@ -9,7 +9,6 @@ import HomeScreen from "./screens/HomeScreen";
 import LoginScreen from "./screens/LoginScreen";
 import ContactsScreen from "./screens/ContactsScreen";
 import {
-  useFonts,
   Poppins_100Thin,
   Poppins_100Thin_Italic,
   Poppins_200ExtraLight,
@@ -28,13 +27,20 @@ import {
   Poppins_800ExtraBold_Italic,
   Poppins_900Black,
   Poppins_900Black_Italic,
+  useFonts,
 } from "@expo-google-fonts/poppins";
+import AppLoading from "expo-app-loading";
+
 const Tab = createBottomTabNavigator();
 
-function MyTabs() {
+const settingsTab =
+  (stackNavigation) =>
+  (...props) =>
+    <SettingsScreen stackNavigation={stackNavigation} {...props} />;
+function MyTabs({ navigation: stackNavigation }) {
   return (
     <Tab.Navigator
-      initialRouteName="Login"
+      initialRouteName="Home"
       screenOptions={{
         tabBarActiveTintColor: "#3D3A9E",
         headerShown: false,
@@ -46,16 +52,6 @@ function MyTabs() {
         },
       }}
     >
-      <Tab.Screen
-        name={"Login"}
-        component={LoginScreen}
-        options={
-          {
-            // hide on tab bar:
-            // tabBarButton: () => null,
-          }
-        }
-      />
       <Tab.Screen
         name="Home"
         component={HomeScreen}
@@ -80,7 +76,7 @@ function MyTabs() {
 
       <Tab.Screen
         name="Settings"
-        component={SettingsScreen}
+        component={settingsTab(stackNavigation)}
         options={{
           tabBarLabel: "Settings",
           tabBarIcon: ({ color, size }) => (
@@ -91,7 +87,24 @@ function MyTabs() {
     </Tab.Navigator>
   );
 }
-import AppLoading from "expo-app-loading";
+
+const Stack = createStackNavigator();
+
+const MyStack = () => {
+  return (
+    <Stack.Navigator
+      initialRouteName={"Login"}
+      screenOptions={{
+        headerShown: false,
+        animationEnabled: false,
+        gestureEnabled: false,
+      }}
+    >
+      <Stack.Screen name="Login" component={LoginScreen} />
+      <Stack.Screen name="Main" component={MyTabs} />
+    </Stack.Navigator>
+  );
+};
 
 export default function App() {
   let [fontsLoaded] = useFonts({
@@ -121,7 +134,7 @@ export default function App() {
     return (
       <NavigationContainer>
         <StatusBar style="dark" />
-        <MyTabs />
+        <MyStack />
       </NavigationContainer>
     );
   }

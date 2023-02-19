@@ -1,9 +1,19 @@
-import React, { useState, useEffect } from "react";
-import { View, Text, SafeAreaView, Pressable, Image } from "react-native";
+import React, { useEffect, useState } from "react";
+import {
+  ImageBackground,
+  Pressable,
+  SafeAreaView,
+  Text,
+  TouchableOpacity,
+  TouchableOpacityComponent,
+  View,
+} from "react-native";
 import auth from "@react-native-firebase/auth";
 import { GoogleSignin } from "@react-native-google-signin/google-signin";
 import firestore from "@react-native-firebase/firestore";
-
+import login_gradient from "../images/splash.png";
+import { SimpleLineIcons } from "@expo/vector-icons";
+import { FontAwesome5 } from "@expo/vector-icons";
 GoogleSignin.configure({
   webClientId:
     "952030183707-mhtnrvjp5v00jj3c44qss68s6daa2de8.apps.googleusercontent.com",
@@ -22,7 +32,7 @@ async function onGoogleButtonPress() {
   return auth().signInWithCredential(googleCredential);
 }
 
-function LoginScreen() {
+function LoginScreen({ navigation }) {
   const [data, setData] = useState({});
 
   useEffect(() => {
@@ -45,6 +55,7 @@ function LoginScreen() {
   function onAuthStateChanged(user) {
     setUser(user);
     if (initializing) setInitializing(false);
+    if (user?.email) navigation.navigate("Main");
   }
 
   useEffect(() => {
@@ -54,57 +65,76 @@ function LoginScreen() {
 
   if (initializing) return null;
 
-  if (!user) {
-    return (
-        <SafeAreaView
-          style={{
-            display: "flex",
-            justifyContent: "center",
-            alignItems: "center",
-            height: "100%",
-          }}
-        >
-          <View>
-          <Image style={{
-          }} source={require("../components/login_gradient.png")} />
-          <Pressable
-            onPress={() =>
-              onGoogleButtonPress().then(() =>
-                console.log("Signed in with Google!")
-              )
-            }
-          >
-            <Text color={"black"}>Login</Text>
-
-          </Pressable>
-          </View>
-        </SafeAreaView>
-    );
-  }
-
   return (
-    <View>
-      <SafeAreaView
+    <ImageBackground source={login_gradient} resizeMode={"cover"}>
+      <View
         style={{
           display: "flex",
-          justifyContent: "center",
+          justifyContent: "flex-end",
           alignItems: "center",
           height: "100%",
         }}
       >
-        <Text>Welcome {user.email}</Text>
-        <Text>{JSON.stringify(data)}</Text>
-        <Pressable
-          onPress={() =>
-            auth()
-              .signOut()
-              .then(() => console.log("User signed out!"))
-          }
+        <View
+          style={{
+            backgroundColor: "#fff",
+            width: "100%",
+            paddingHorizontal: 40,
+            paddingVertical: 40,
+            borderTopLeftRadius: 60,
+            borderTopRightRadius: 60,
+          }}
         >
-          <Text>Logout</Text>
-        </Pressable>
-      </SafeAreaView>
-    </View>
+          <Text
+            style={{
+              fontSize: 30,
+              fontFamily: "Poppins_800ExtraBold",
+            }}
+          >
+            Welcome.
+          </Text>
+          <Text
+            style={{
+              fontSize: 14,
+              fontFamily: "Poppins_300Light",
+              marginTop: 10,
+            }}
+          >
+            Sign in and go crazy, we will contact your friends, we will contact
+            your parents, we will publicly humiliate you too, so don’t skip and
+            be held accountable.
+          </Text>
+          <TouchableOpacity
+            onPress={() => {
+              onGoogleButtonPress().then(() => {
+                navigation.navigate("Main");
+              });
+            }}
+            style={{
+              borderRadius: 40,
+              backgroundColor: "#F1F0F0",
+              padding: 20,
+              marginTop: 20,
+              display: "flex",
+              flexDirection: "row",
+              alignItems: "center",
+            }}
+          >
+            <SimpleLineIcons name="social-google" size={24} color="black" />
+            <Text
+              style={{
+                marginLeft: 12,
+                fontFamily: "Poppins_500Medium",
+                flexGrow: 1,
+              }}
+            >
+              Continue with Google
+            </Text>
+            <SimpleLineIcons name="arrow-right" size={20} color="black" />
+          </TouchableOpacity>
+        </View>
+      </View>
+    </ImageBackground>
   );
 }
 

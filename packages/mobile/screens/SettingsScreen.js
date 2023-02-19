@@ -10,7 +10,7 @@ import {
 import SettingsBG from "../components/SettingsCoolio.png";
 import auth from "@react-native-firebase/auth";
 
-export default function SettingsScreen() {
+export default function SettingsScreen({ stackNavigation }) {
   return (
     <ImageBackground
       style={{
@@ -62,7 +62,11 @@ export default function SettingsScreen() {
       </View>
       <Button
         title={"sign out bitch"}
-        onPress={() => auth().signOut()}
+        onPress={() =>
+          auth()
+            .signOut()
+            .then(() => stackNavigation.navigate("Login"))
+        }
       ></Button>
     </ImageBackground>
   );
