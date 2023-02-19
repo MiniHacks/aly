@@ -6,32 +6,49 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
+import cardStyles from "./CardStyles";
 function DoSomethingButton({ navigation }) {
   return (
-    <Pressable
-      onPress={() => navigation.navigate("DoSomething")}
-      style={styles.button}
-    >
-      <Text style={styles.text}>Do Something</Text>
-    </Pressable>
+    <View style={[styles.bigbox, cardStyles]}>
+      <View
+        style={{
+          backgroundColor: "#BBDDFF",
+          borderRadius: 10,
+          height: 40,
+          width: 40,
+          overflow: "hidden",
+          padding: 5,
+          marginRight: 10,
+        }}
+      >
+        <Entypo name="clipboard" size={30} color="#3498FD" />
+      </View>
+      <Pressable
+        onPress={() => navigation.navigate("DoSomething")}
+        style={styles.button}
+      >
+        <Text style={styles.text1}>Do Something</Text>
+      </Pressable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: "#3D3A9E",
-    borderRadius: 10,
-    padding: 10,
-    margin: 10,
-    width: 200,
-    alignSelf: "center",
-  },
-  text: {
-    color: "#FFF",
+  text1: {
+    color: "#3D3A9E",
     fontFamily: "Poppins_600SemiBold",
     fontSize: 24,
-    textAlign: "center",
+    display: "flex",
+  },
+
+  bigbox: {
+    flex: 1,
+    padding: 10,
+    flexDirection: "row",
+    borderRadius: 10,
+    backgroundColor: "#FFF",
+    alignItems: "center",
   },
 });
 

@@ -6,32 +6,48 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
+import cardStyles from "./CardStyles";
 function BeSomewhereButton({ navigation }) {
   return (
-    <Pressable
-      onPress={() => navigation.navigate("BeSomewhere")}
-      style={styles.button}
-    >
-      <Text style={styles.text}>Be Somewhere</Text>
-    </Pressable>
+    <View style={[styles.bigbox, cardStyles]}>
+      <View
+        style={{
+          backgroundColor: "#FFD7EF",
+          borderRadius: 10,
+          height: 40,
+          width: 40,
+          overflow: "hidden",
+          padding: 5,
+          marginRight: 10,
+        }}
+      >
+        <Entypo name="location-pin" size={30} color="#A42A73" />
+      </View>
+      <Pressable
+        onPress={() => navigation.navigate("BeSomewhere")}
+        style={styles.button}
+      >
+        <Text style={styles.text1}>Be Somewhere</Text>
+      </Pressable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: "#3D3A9E",
-    borderRadius: 10,
-    padding: 10,
-    margin: 10,
-    width: 200,
-    alignSelf: "center",
-  },
-  text: {
-    color: "#FFF",
+  text1: {
+    color: "#3D3A9E",
     fontFamily: "Poppins_600SemiBold",
     fontSize: 24,
-    textAlign: "center",
+    display: "flex",
+  },
+  bigbox: {
+    flex: 1,
+    padding: 10,
+    flexDirection: "row",
+    borderRadius: 10,
+    backgroundColor: "#FFF",
+    alignItems: "center",
   },
 });
 

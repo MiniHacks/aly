@@ -21,7 +21,7 @@ const styles = StyleSheet.create({
     flexDirection: "column",
     borderRadius: 10,
     backgroundColor: "#FFF",
-    height: 200,
+    height: 250,
     marginHorizontal: 20,
     marginTop: -70,
   },

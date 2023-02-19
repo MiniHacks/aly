@@ -6,32 +6,49 @@ import {
   Pressable,
   TouchableOpacity,
 } from "react-native";
-import { MaterialCommunityIcons } from "@expo/vector-icons";
+import { Entypo, MaterialCommunityIcons } from "@expo/vector-icons";
+import cardStyles from "./CardStyles";
 function FocusButton({ navigation }) {
   return (
-    <Pressable
-      onPress={() => navigation.navigate("Focus")}
-      style={styles.button}
-    >
-      <Text style={styles.text}>Focus</Text>
-    </Pressable>
+    <View style={[styles.bigbox, cardStyles]}>
+      <View
+        style={{
+          backgroundColor: "#BAD38F",
+          borderRadius: 10,
+          height: 40,
+          width: 40,
+          overflow: "hidden",
+          padding: 5,
+          marginRight: 10,
+        }}
+      >
+        <Entypo name="eye" size={30} color="#7E9D4F" />
+      </View>
+      <Pressable
+        onPress={() => navigation.navigate("Focus")}
+        style={styles.button}
+      >
+        <Text style={styles.text1}>Focus</Text>
+      </Pressable>
+    </View>
   );
 }
 
 const styles = StyleSheet.create({
-  button: {
-    backgroundColor: "#3D3A9E",
-    borderRadius: 10,
-    padding: 10,
-    margin: 10,
-    width: 200,
-    alignSelf: "center",
-  },
-  text: {
-    color: "#FFF",
+  text1: {
+    color: "#3D3A9E",
     fontFamily: "Poppins_600SemiBold",
     fontSize: 24,
-    textAlign: "center",
+    display: "flex",
+  },
+
+  bigbox: {
+    flex: 1,
+    padding: 10,
+    flexDirection: "row",
+    borderRadius: 10,
+    backgroundColor: "#FFF",
+    alignItems: "center",
   },
 });
 
