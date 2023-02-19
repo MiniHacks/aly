@@ -32,18 +32,14 @@ export default function NextUpButton({ event }) {
 const styles = StyleSheet.create({
   text1: {
     color: "#3D3A9E",
-    fontFamily: "Poppins",
-    fontWeight: "bold",
+    fontFamily: "Poppins_600SemiBold",
     fontSize: 24,
     display: "flex",
-    paddingBottom: 2.5,
   },
   text2: {
     fontSize: 17,
     color: "black",
-    fontFamily: "Poppins",
-    fontWeight: "300",
-    paddingTop: 2.5,
+    fontFamily: "Poppins_300Light",
   },
   box1: {
     flex: 1,

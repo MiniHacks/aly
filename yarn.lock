@@ -2809,6 +2809,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@expo-google-fonts/poppins@npm:^0.2.2":
+  version: 0.2.2
+  resolution: "@expo-google-fonts/poppins@npm:0.2.2"
+  checksum: 1231db0d7a67deb49de07fd5af36cd02dab9f0bdd4dd7085e77c1cda8a5df4531d70b4bf5387cd08e3f03e53cc092025d8739769773462ebb1f43c2d198f5cc0
+  languageName: node
+  linkType: hard
+
 "@expo/bunyan@npm:4.0.0, @expo/bunyan@npm:^4.0.0":
   version: 4.0.0
   resolution: "@expo/bunyan@npm:4.0.0"
@@ -7938,6 +7945,15 @@ __metadata:
   languageName: node
   linkType: hard
 
+"expo-app-loading@npm:~2.1.1":
+  version: 2.1.1
+  resolution: "expo-app-loading@npm:2.1.1"
+  dependencies:
+    expo-splash-screen: ~0.17.0
+  checksum: e3fb2973bf996a6d7999b5b2e686009108ecda0c607393e58a8c859b9cd2f41b62a0153fcab662dc0886ad48aead22e1a4f5cd82d325398f842a4d555b0b3cd5
+  languageName: node
+  linkType: hard
+
 "expo-application@npm:~5.0.1":
   version: 5.0.1
   resolution: "expo-application@npm:5.0.1"
@@ -8039,7 +8055,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"expo-splash-screen@npm:~0.17.5":
+"expo-splash-screen@npm:~0.17.0, expo-splash-screen@npm:~0.17.5":
   version: 0.17.5
   resolution: "expo-splash-screen@npm:0.17.5"
   dependencies:
@@ -11089,6 +11105,7 @@ __metadata:
   resolution: "mobile@workspace:packages/mobile"
   dependencies:
     "@babel/core": ^7.12.9
+    "@expo-google-fonts/poppins": ^0.2.2
     "@expo/vector-icons": ^13.0.0
     "@react-native-firebase/app": ^17.3.0
     "@react-native-firebase/auth": ^17.3.0
@@ -11097,6 +11114,7 @@ __metadata:
     "@react-navigation/bottom-tabs": ^6.5.5
     "@react-navigation/native": ^6.1.4
     expo: ~47.0.12
+    expo-app-loading: ~2.1.1
     expo-font: ~11.0.1
     expo-splash-screen: ~0.17.5
     expo-status-bar: ~1.4.2

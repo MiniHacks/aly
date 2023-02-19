@@ -1,15 +1,14 @@
 import React from "react";
 import {
-  SafeAreaView,
-  Text,
-  View,
   ScrollView,
+  StyleSheet,
+  Text,
   TouchableOpacity,
+  View,
 } from "react-native";
 import StrikeButton from "../components/StrikeButton";
 import StreakIcon from "../components/StreakIcon";
 import NextUpButton from "../components/NextUpButton";
-import { StyleSheet } from "react-native";
 import TaskList from "../components/TaskList";
 import { MaterialCommunityIcons } from "@expo/vector-icons";
 
@@ -25,16 +24,12 @@ function AddTaskButton({ navigation }) {
 }
 
 function getDate() {
-  var dayName = new Date().toLocaleString("en-us", { weekday: "long" });
-  var monthName = new Date().toLocaleString("en-us", { month: "long" });
-  var dayNumber = new Date().getDate();
-  return (
-    dayName.toLowerCase() +
-    ", " +
-    monthName.toLowerCase().slice(0, 3) +
-    " " +
-    dayNumber
-  );
+  const dayName = new Date().toLocaleString("en-us", { weekday: "long" });
+  const monthName = new Date().toLocaleString("en-us", { month: "long" });
+  const dayNumber = new Date().getDate();
+  return `${dayName.toLowerCase()}, ${monthName
+    .toLowerCase()
+    .slice(0, 3)} ${dayNumber}`;
 }
 
 export default function HomeScreen(navigation) {
@@ -85,9 +80,7 @@ export default function HomeScreen(navigation) {
         </View>
         <Text
           style={{
-            fontFamily: "Poppins",
-            fontStyle: "normal",
-            fontWeight: "600",
+            fontFamily: "Poppins_600SemiBold",
             fontSize: 24,
             lineHeight: 42,
             color: "#FFFFFF",
@@ -114,9 +107,7 @@ export default function HomeScreen(navigation) {
         >
           <Text
             style={{
-              fontFamily: "Poppins",
-              fontStyle: "normal",
-              fontWeight: "600",
+              fontFamily: "Poppins_600SemiBold",
               fontSize: 24,
               lineHeight: 42,
               color: "#FFFFFF",
@@ -143,7 +134,7 @@ export default function HomeScreen(navigation) {
 
 const styles = StyleSheet.create({
   date: {
-    fontFamily: "Poppins",
+    fontFamily: "Poppins_400Regular",
     fontStyle: "normal",
     fontWeight: "600",
     fontSize: 28,

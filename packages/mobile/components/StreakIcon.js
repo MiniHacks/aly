@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     borderRadius: 10,
   },
   text: {
-    fontFamily: "Poppins",
+    fontFamily: "Poppins_700Bold",
     fontStyle: "normal",
     fontWeight: "700",
     fontSize: 20,

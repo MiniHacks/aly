@@ -11,6 +11,7 @@
     "clean": "npx react-native-clean-project"
   },
   "dependencies": {
+    "@expo-google-fonts/poppins": "^0.2.2",
     "@expo/vector-icons": "^13.0.0",
     "@react-native-firebase/app": "^17.3.0",
     "@react-native-firebase/auth": "^17.3.0",
@@ -19,6 +20,7 @@
     "@react-navigation/bottom-tabs": "^6.5.5",
     "@react-navigation/native": "^6.1.4",
     "expo": "~47.0.12",
+    "expo-app-loading": "~2.1.1",
     "expo-font": "~11.0.1",
     "expo-splash-screen": "~0.17.5",
     "expo-status-bar": "~1.4.2",
