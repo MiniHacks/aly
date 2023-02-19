@@ -1,6 +1,11 @@
 // dotenv
-const _l = console.log;
-console.log = (...params) => _l("\x1b[35m" + "[io]", ...params);
+const admin = require("firebase-admin");
+
+const serviceAccount = require("path/to/serviceAccountKey.json");
+
+admin.initializeApp({
+  credential: admin.credential.cert(serviceAccount),
+});
 
 import express, { Request, Response } from "express";
 import { createServer } from "http";

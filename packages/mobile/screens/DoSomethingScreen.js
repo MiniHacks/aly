@@ -12,7 +12,7 @@ import {
 import DatePicker from "react-native-date-picker";
 import TaskBG from "../components/TaskBG.png";
 
-export default function DoSomething(navigation) {
+export default function DoSomething({ navigation }) {
   const [date, setDate] = useState(new Date());
   const [text, onChangeText] = React.useState("");
 
@@ -47,13 +47,14 @@ export default function DoSomething(navigation) {
         <DatePicker date={date} onDateChange={setDate} />
       </View>
       <Pressable
+        onPress={() => navigation.navigate("Home")}
         style={{
           backgroundColor: "#fff",
-          width: 60,
+          width: 80,
           height: 40,
           borderRadius: 20,
-          marginLeft: "7.5%",
           overflow: "hidden",
+          alignItems: "center",
         }}
       >
         <Text
@@ -64,7 +65,9 @@ export default function DoSomething(navigation) {
             textAlign: "center",
             marginTop: 10,
           }}
-        ></Text>
+        >
+          Submit
+        </Text>
       </Pressable>
     </ImageBackground>
   );
@@ -86,5 +89,6 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
     justifyContent: "center",
+    alignItems: "center",
   },
 });

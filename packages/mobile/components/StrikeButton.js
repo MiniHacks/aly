@@ -3,7 +3,15 @@ import { StyleSheet, Text, View } from "react-native";
 import cardStyles from "./CardStyles";
 
 export default function StrikeButton({ strikeCount }) {
-  const text = ["on track.", "Strike 1", "Strike 2", "Strike 3"][strikeCount];
+  const text = ["on track.", "strike 1 :c", "strike 2 :/", "strike 3 :("][
+    strikeCount
+  ];
+  const subtext = [
+    "you're on a streak! keep going 🤩",
+    "don't get down on yourself. you can do it!",
+    "don't get down on yourself. you can do it!",
+    "don't get down on yourself. you can do it!",
+  ][strikeCount];
   return (
     <View
       style={{
@@ -24,9 +32,7 @@ export default function StrikeButton({ strikeCount }) {
           <Text style={styles.text1}>{text}</Text>
         </View>
         <View style={styles.box2}>
-          <Text style={styles.text2}>
-            you’re on a seven day streak! keep it up!
-          </Text>
+          <Text style={styles.text2}>{subtext}</Text>
         </View>
       </View>
     </View>
@@ -59,13 +65,12 @@ const styles = StyleSheet.create({
     fontFamily: "Poppins_600SemiBold",
     fontStyle: "normal",
     fontSize: 60,
-    lineHeight: 60,
   },
   text2: {
     fontSize: 18,
     color: "white",
     fontFamily: "Poppins_400Regular",
-    lineHeight: 21,
+    lineHeight: 24,
     display: "flex",
     alignItems: "center",
     textAlign: "center",

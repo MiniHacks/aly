@@ -1,10 +1,10 @@
-import type { NextPage } from "next";
-import { Box, Button, Heading, HStack, Text, VStack } from "@chakra-ui/react";
+import { Text, VStack } from "@chakra-ui/react";
 import React, { useEffect, useState } from "react";
-import PageLayout from "../components/Layout/PageLayout";
+import { useRouter } from "next/router";
 
 const Strike = (): JSX.Element => {
   const [position, setPosition] = useState({ x: 0, y: 0 });
+  const router = useRouter();
 
   useEffect(() => {
     const intervalId = setInterval(() => {
@@ -27,11 +27,17 @@ const Strike = (): JSX.Element => {
         color={"whiteAlpha.700"}
         transform={`translate(${position.x}px, ${position.y}px)`}
       >
-        STRIKE! 🤡
+        STRIKE {router.query.num}! 🤡
       </Text>
-      <Text fontFamily={"Lato"} color={"whiteAlpha.400"} fontSize={"65px"}>
-        {" "}
-        You got distracted... so we texted [person]
+      <Text
+        fontFamily={"Lato"}
+        color={"whiteAlpha.400"}
+        fontSize={"65px"}
+        pl={50}
+        pr={50}
+        textAlign={"center"}
+      >
+        You got distracted... so we texted {router.query.name} for you.
       </Text>
     </VStack>
   );
