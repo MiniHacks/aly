@@ -11,7 +11,7 @@ import SettingsBG from "../components/BackgroundSettings.png";
 import auth from "@react-native-firebase/auth";
 import cardStyles from "../components/CardStyles";
 
-export default function SettingsScreen() {
+export default function SettingsScreen(stackNavigation) {
   const user = auth().currentUser;
   return (
     <ImageBackground
@@ -50,7 +50,7 @@ export default function SettingsScreen() {
             marginLeft: 20,
           }}
         >
-          <Image source={{ uri: user.photoURL }} />
+          <Image source={{ uri: user.photoURL }} style={{ flex: 1 }} />
         </View>
         <View
           style={{
